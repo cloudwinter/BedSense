@@ -29,6 +29,8 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
+    private final static int PERMISSION_REQUEST_COARSE_LOCATION = 3;
+
     Activity activity;
     private int REQUEST_ENABLE_BT = 1;
     private WaitDialog waitDialog;
@@ -70,20 +72,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
         }
-        //申请扫描蓝牙权限
-        if (Build.VERSION.SDK_INT >= 23) {
-            //判断是否有权限
-            if (ContextCompat.checkSelfPermission(MainActivity.this,
-                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                //请求权限
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
-                        0x001);
-                //向用户解释，为什么要申请该权限
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                        Manifest.permission.READ_CONTACTS)) {
-                    Toast.makeText(MainActivity.this, "shouldShowRequestPermissionRationale", Toast.LENGTH_SHORT).show();
-                }
+//        //申请扫描蓝牙权限
+//        if (Build.VERSION.SDK_INT >= 23) {
+//            //判断是否有权限
+//            if (ContextCompat.checkSelfPermission(MainActivity.this,
+//                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//                //请求权限
+//                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+//                        0x001);
+//                //向用户解释，为什么要申请该权限
+//                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+//                        Manifest.permission.READ_CONTACTS)) {
+//                    Toast.makeText(MainActivity.this, "shouldShowRequestPermissionRationale", Toast.LENGTH_SHORT).show();
+//                }
+//
+//            }
+//        }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (this.checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PERMISSION_REQUEST_COARSE_LOCATION);
             }
         }
     }
