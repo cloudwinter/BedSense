@@ -32,7 +32,7 @@ public class BaseActivity extends AppCompatActivity {
         //初始化PreferenceUtil
         PreferenceUtil.init(this);
         //根据上次的语言设置，重新设置语言
-     //   switchLanguage(PreferenceUtil.getString("language", "zh"));
+        switchLanguage(PreferenceUtil.getString("language", "en"));
     }
 
     @Override
