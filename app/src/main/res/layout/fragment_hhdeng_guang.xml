@@ -159,12 +159,14 @@
 
                     <RelativeLayout
                         android:id="@+id/ll_dianshi"
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp">
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -193,12 +195,14 @@
 
                     <RelativeLayout
                         android:id="@+id/ll_lingyali"
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp">
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -241,16 +245,18 @@
 
                     <RelativeLayout
                         android:id="@+id/ll_shuimian"
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp">
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="50dp"
+                            android:layout_height="11dp"
                             android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
                             android:background="@drawable/ic_shuimianmoshi" />
@@ -258,7 +264,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
                             android:text="@string/sleep"
                             android:textColor="@color/set_right_text"
@@ -267,13 +273,14 @@
 
                     <RelativeLayout
                         android:id="@+id/ll_kq_shuimian"
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
-                        android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:visibility="gone">
 
                         <ImageView
@@ -303,13 +310,14 @@
 
                     <RelativeLayout
                         android:id="@+id/ll_fuyuan"
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
-                        android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp">
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp">
 
                         <ImageView
                             android:layout_width="50dp"
@@ -330,13 +338,14 @@
 
                     <RelativeLayout
                         android:id="@+id/ll_kq_fuyuan"
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
-                        android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:visibility="gone">
 
                         <ImageView
@@ -376,13 +385,14 @@
 
                     <RelativeLayout
                         android:id="@+id/ll_qinxie1"
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
-                        android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp">
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -411,12 +421,14 @@
 
                     <RelativeLayout
                         android:id="@+id/qinxie2"
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp">
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp">
 
                         <ImageView
                             android:layout_width="wrap_content"
@@ -455,13 +467,14 @@
 
                     <RelativeLayout
                         android:id="@+id/Rl_up"
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
-                        android:gravity="center_vertical"
                         android:orientation="horizontal"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp">
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -504,12 +517,14 @@
 
                     <RelativeLayout
                         android:id="@+id/RL_down"
-                        android:layout_width="150dp"
+                        android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp">
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
