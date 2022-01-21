@@ -62,9 +62,13 @@ import com.fenmenbielei.bedsense.uitls.SystemUtils;
 import com.fenmenbielei.bedsense.uitls.ToastUtils;
 import com.fenmenbielei.bedsense.view.NoScrollViewPager;
 import com.fenmenbielei.bedsense.view.TranslucentActionBar;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 import com.wnhz.shidaodianqi.R;
 
 import net.frakbot.jumpingbeans.JumpingBeans;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.StreamCorruptedException;
@@ -76,6 +80,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ShuShiBanActivity extends BaseActivity implements View.OnClickListener, ActionBarClickListener {
+
+    public static final String TAG = "ShuShiBanActivity";
+
     @BindView(R.id.actionbar)
     TranslucentActionBar actionbar;
 
@@ -180,7 +187,8 @@ public class ShuShiBanActivity extends BaseActivity implements View.OnClickListe
     private Animation slide_left_to_right;
     private Animation slide_left_to_left_in;
 
-    HHKuaiJieFragment homeFragment1 = HHKuaiJieFragment.newInstance(rev_str);
+//    HHKuaiJieFragment homeFragment1 = HHKuaiJieFragment.newInstance(rev_str);
+    HHKuaiJieFragment homeFragment1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -188,7 +196,6 @@ public class ShuShiBanActivity extends BaseActivity implements View.OnClickListe
         setContentView(R.layout.activity_shu_shi_ban);
         ButterKnife.bind(this);
         SharedPreferences read = getSharedPreferences("type", MODE_PRIVATE);
-
         String value = read.getString("TYPE", "");
         rev_str = value;
         if (value.equals("1")) {
@@ -302,14 +309,16 @@ public class ShuShiBanActivity extends BaseActivity implements View.OnClickListe
         sw_on_off.setOnClickListener(this);
 
         final String liststr = mySharedPreferences.getString("LIST", "");
-        try {
-            testBeanList = MyApplication.String2SceneList(liststr);
-        } catch (StreamCorruptedException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        if (!TextUtils.isEmpty(liststr)) {
+            try {
+                testBeanList = MyApplication.String2SceneList(liststr);
+            } catch (StreamCorruptedException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         }
         //进行保存获取。
         LogUtils.e("==本地保存的已经存在的集合长度==", "" + testBeanList.size());
@@ -511,8 +520,8 @@ public class ShuShiBanActivity extends BaseActivity implements View.OnClickListe
     public void initData() {
         List<Fragment> listFragent = new ArrayList<>();
         SharedPreferences read = getSharedPreferences("type", MODE_PRIVATE);
-
         String value = read.getString("TYPE", "");
+        homeFragment1 = HHKuaiJieFragment.newInstance(value);
         listFragent.add(homeFragment1);
         HHWeiTiaoFragment homeFragment2 = HHWeiTiaoFragment.newInstance(value);
         listFragent.add(homeFragment2);
@@ -552,7 +561,7 @@ public class ShuShiBanActivity extends BaseActivity implements View.OnClickListe
             } else if (value.equals("8")) {
                 actionbar.setData("BEDSENSE-350", R.mipmap.ic_default_return, null, R.mipmap.ic_default_set, null, this);
             }else if (value.equals("9")) {
-                actionbar.setData("BEDSENSE-1050", R.mipmap.ic_default_return, null, R.mipmap.ic_default_set, null, this);
+                actionbar.setData("Permobil Resten Hi-Low", R.mipmap.ic_default_return, null, R.mipmap.ic_default_set, null, this);
             }
 
             ll_left.startAnimation(slide_left_to_left_in);
@@ -591,6 +600,29 @@ public class ShuShiBanActivity extends BaseActivity implements View.OnClickListe
             ll_center.setVisibility(View.VISIBLE);
             ll_right.startAnimation(slide_left_to_right);
             ll_right.setVisibility(View.GONE);
+        }
+    }
+
+
+    private void setActionbarTitle() {
+        SharedPreferences read = getSharedPreferences("type", MODE_PRIVATE);
+        String value = read.getString("TYPE", "");
+        if (value.equals("1"))
+            actionbar.setTitle("BEDSENSE-850");
+        else if (value.equals("2")) {
+            actionbar.setTitle("BEDSENSE-890");
+        } else if (value.equals("5")) {
+            actionbar.setTitle("BEDSENSE-1050");
+        } else if (value.equals("4")) {
+            actionbar.setTitle("BEDSENSE-1150");
+        } else if (value.equals("6")) {
+            actionbar.setTitle("BEDSENSE-250");
+        } else if (value.equals("7")) {
+            actionbar.setTitle("BEDSENSE-150");
+        } else if (value.equals("8")) {
+            actionbar.setTitle("BEDSENSE-350");
+        }else if (value.equals("9")) {
+            actionbar.setTitle("Permobil Resten Hi-Low");
         }
     }
 
@@ -643,6 +675,7 @@ public class ShuShiBanActivity extends BaseActivity implements View.OnClickListe
     // Activity出来时候，绑定广播接收器，监听蓝牙连接服务传过来的事件
     @Override
     protected void onResume() {
+        LogUtils.e(TAG,"onResume");
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
         if (Prefer.getInstance().getCurrentDecice().equals("")||Prefer.getInstance().getBleStatus().equals("")) {
             LogUtils.e("==onResume 连接==", Prefer.getInstance().getCurrentDecice()+Prefer.getInstance().getBleStatus());
@@ -730,7 +763,9 @@ public class ShuShiBanActivity extends BaseActivity implements View.OnClickListe
             scan_flag = false;
             tv_try.setText(getResources().getString(R.string.saomiaozhong));
             mJumpingBeans = JumpingBeans.with(tv_try).appendJumpingDots().build();
-            mBluetoothAdapter.startLeScan(mLeScanCallback);
+            if (RunningContext.checkLocationPermission(ShuShiBanActivity.this, true)) {
+                mBluetoothAdapter.startLeScan(mLeScanCallback);
+            }
         } else {
             LogUtils.e("==停止扫描蓝牙设备==", "stoping................");
             mScanning = false;
@@ -742,10 +777,10 @@ public class ShuShiBanActivity extends BaseActivity implements View.OnClickListe
 
             actionbar.setData(getResources().getString(R.string.no_contect), R.mipmap.ic_default_return, null, R.mipmap.ic_default_set, null, this);
             //   actionbar.setData("未连接", R.mipmap.ic_default_return, null, 0, null, this);
-            ll_left.startAnimation(slide_left_to_left);
-            ll_left.setVisibility(View.VISIBLE);
-            ll_right.startAnimation(slide_right_to_left);
-            ll_right.setVisibility(View.GONE);
+//            ll_left.startAnimation(slide_left_to_left);
+//            ll_left.setVisibility(View.VISIBLE);
+//            ll_right.startAnimation(slide_right_to_left);
+//            ll_right.setVisibility(View.GONE);
         }
     }
 
@@ -790,6 +825,7 @@ public class ShuShiBanActivity extends BaseActivity implements View.OnClickListe
         }
 
         public void addDevice(BluetoothDevice device, int rssi) {
+            LogUtils.d("addDevice", "device:" + new Gson().toJson(device));
             if (!mLeDevices.contains(device) && device.getName() != null) {
                 mLeDevices.add(device);
                 TestBean testBean = new TestBean();
@@ -831,7 +867,6 @@ public class ShuShiBanActivity extends BaseActivity implements View.OnClickListe
                     testBean.setIsKQH(true);
 
                 }
-
                 testBeanList.add(testBean);
                 rssis.add(rssi);
             }
@@ -997,7 +1032,7 @@ public class ShuShiBanActivity extends BaseActivity implements View.OnClickListe
                     ll_left.setVisibility(View.VISIBLE);
                     ll_right.startAnimation(slide_right_to_left);
                     ll_right.setVisibility(View.GONE);
-
+                    setActionbarTitle();
                     first = "2";
                 } else {
 

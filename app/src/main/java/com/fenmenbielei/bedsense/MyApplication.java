@@ -73,6 +73,7 @@ public class MyApplication extends Application {
         LogUtils.e("---", "[MyApplication] onCreate");
         super.onCreate();
         instance = this;
+        RunningContext.init(this);
         initImageLoader();
         initFilePath();
         // Initializes Bluetooth adapter.
@@ -210,4 +211,6 @@ public class MyApplication extends Application {
 
         Bugly.init(getApplicationContext(), "a8c7c54c59", false);
     }
+
+
 }

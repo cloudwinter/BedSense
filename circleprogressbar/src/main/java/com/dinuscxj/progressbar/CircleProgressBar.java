@@ -203,9 +203,9 @@ public class CircleProgressBar extends ProgressBar {
             mCurrentDrawableField.setAccessible(true);
             mCurrentDrawableField.set(this, null);
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 

@@ -11,10 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true" />
 
+    <!-- 主页界面 -->
     <RelativeLayout
         android:id="@+id/ll_left"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <com.fenmenbielei.bedsense.view.NoScrollViewPager
             android:id="@+id/vp_main"
@@ -97,6 +99,7 @@
         </LinearLayout>
     </RelativeLayout>
 
+    <!-- 蓝牙设置界面 -->
     <LinearLayout
         android:id="@+id/ll_center"
         android:layout_width="match_parent"
@@ -326,6 +329,7 @@
 
     </LinearLayout>
 
+    <!-- 蓝牙搜索界面 -->
     <RelativeLayout
         android:id="@+id/ll_right"
         android:layout_width="match_parent"
