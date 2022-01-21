@@ -461,7 +461,7 @@ public class HHWeiTiaoFragment extends BaseFragment implements View.OnTouchListe
 //        }
         if (rev_string.equals("FF FF FF FF 05 00 05 00 E3 86 88 ")) {
             img_light.setImageDrawable(null);
-            img_light.setBackgroundResource(R.drawable.ic_toubu);
+            img_light.setBackgroundResource(R.drawable.ic_tunbu_light);
             tv_title.setText(R.string.tou);
         }
         if (rev_string.equals("FF FF FF FF 05 00 05 00 E5 06 8A ")) {
