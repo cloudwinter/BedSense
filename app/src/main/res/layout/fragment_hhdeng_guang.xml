@@ -477,10 +477,10 @@
                                 android:src="@drawable/ic_tringle_upward" />
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="50dp"
+                                android:layout_height="11dp"
                                 android:layout_marginTop="2dp"
-                                android:background="@drawable/ic_shuimianmoshi" />
+                                android:background="@drawable/ic_yijianfuyuan" />
 
                         </LinearLayout>
 
@@ -525,10 +525,10 @@
                                 android:src="@drawable/ic_tringle_down" />
 
                             <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_width="50dp"
+                                android:layout_height="11dp"
                                 android:layout_marginTop="2dp"
-                                android:background="@drawable/ic_shuimianmoshi" />
+                                android:background="@drawable/ic_yijianfuyuan" />
                         </LinearLayout>
 
 
