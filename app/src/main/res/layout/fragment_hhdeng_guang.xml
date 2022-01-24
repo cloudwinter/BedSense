@@ -146,9 +146,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="9dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginRight="15dp">
+                android:layout_marginRight="9dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -163,14 +163,14 @@
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp">
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="52dp"
+                            android:layout_height="25dp"
                             android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
                             android:background="@drawable/ic_yijiankandianshi" />
@@ -182,7 +182,7 @@
                             android:layout_centerInParent="true"
                             android:text="@string/watch_tv"
                             android:textColor="@color/set_right_text"
-                            android:textSize="11sp" />
+                            android:textSize="11dp" />
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -199,14 +199,14 @@
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp">
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="52dp"
+                            android:layout_height="19dp"
                             android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
                             android:background="@drawable/ic_lingyalizhuangtai" />
@@ -218,7 +218,7 @@
                             android:layout_centerInParent="true"
                             android:text="@string/no_press"
                             android:textColor="@color/set_right_text"
-                            android:textSize="11sp" />
+                            android:textSize="11dp" />
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -232,9 +232,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="9dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="15dp">
+                android:layout_marginRight="9dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -249,10 +249,10 @@
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp">
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp">
 
                         <ImageView
                             android:layout_width="50dp"
@@ -268,7 +268,7 @@
                             android:layout_centerVertical="true"
                             android:text="@string/sleep"
                             android:textColor="@color/set_right_text"
-                            android:textSize="11sp" />
+                            android:textSize="11dp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -279,8 +279,8 @@
                         android:orientation="horizontal"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
                         android:visibility="gone">
 
                         <ImageView
@@ -314,10 +314,10 @@
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp">
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp">
 
                         <ImageView
                             android:layout_width="50dp"
@@ -333,7 +333,7 @@
                             android:layout_centerInParent="true"
                             android:text="@string/yijian_fuyuan"
                             android:textColor="@color/set_right_text"
-                            android:textSize="11sp" />
+                            android:textSize="11dp" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -342,10 +342,10 @@
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp"
                         android:visibility="gone">
 
                         <ImageView
@@ -372,9 +372,9 @@
                 android:id="@+id/haohua_anniu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="9dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="15dp">
+                android:layout_marginRight="9dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -389,14 +389,14 @@
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp">
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="52dp"
+                            android:layout_height="16dp"
                             android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
                             android:background="@drawable/tang" />
@@ -408,7 +408,7 @@
                             android:layout_centerInParent="true"
                             android:text="@string/music"
                             android:textColor="@color/set_right_text"
-                            android:textSize="11sp" />
+                            android:textSize="11dp" />
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -425,14 +425,14 @@
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp">
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="52dp"
+                            android:layout_height="16dp"
                             android:layout_alignParentLeft="true"
                             android:layout_centerInParent="true"
                             android:background="@drawable/tangf" />
@@ -444,7 +444,7 @@
                             android:layout_centerInParent="true"
                             android:text="@string/relax"
                             android:textColor="@color/set_right_text"
-                            android:textSize="11sp" />
+                            android:textSize="11dp" />
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -453,10 +453,10 @@
                 android:id="@+id/LL_S4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="9dp"
                 android:layout_marginTop="8dp"
                 android:visibility="gone"
-                android:layout_marginRight="15dp">
+                android:layout_marginRight="9dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -471,10 +471,10 @@
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp">
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -504,7 +504,7 @@
                             android:layout_centerInParent="true"
                             android:text="@string/text_up"
                             android:textColor="@color/set_right_text"
-                            android:textSize="12sp" />
+                            android:textSize="11dp" />
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -521,10 +521,10 @@
                         android:layout_height="50dp"
                         android:background="@drawable/ic_kuaijie_normal"
                         android:orientation="horizontal"
-                        android:paddingLeft="10dp"
-                        android:paddingRight="10dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp">
+                        android:paddingLeft="9dp"
+                        android:paddingRight="9dp"
+                        android:layout_marginLeft="9dp"
+                        android:layout_marginRight="9dp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -554,7 +554,7 @@
                             android:layout_centerInParent="true"
                             android:text="@string/text_down"
                             android:textColor="@color/set_right_text"
-                            android:textSize="12sp" />
+                            android:textSize="11dp" />
                     </RelativeLayout>
                 </LinearLayout>
             </LinearLayout>
