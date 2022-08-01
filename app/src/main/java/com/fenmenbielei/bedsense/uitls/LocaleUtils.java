@@ -5,9 +5,12 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
 
 import com.google.gson.Gson;
 
+import java.lang.reflect.Method;
 import java.util.Locale;
 
 /**
@@ -15,6 +18,9 @@ import java.util.Locale;
  */
 
 public class LocaleUtils {
+
+    private final static String TAG = "LocaleUtils";
+
     /**
      * 中文
      */
@@ -23,6 +29,10 @@ public class LocaleUtils {
      * 英文
      */
     public static final Locale LOCALE_ENGLISH = Locale.ENGLISH;
+    /**
+     * 法文
+     */
+    public static final Locale LOCALE_FRENCH = Locale.FRENCH;
     /**
      * 俄文
      */
@@ -38,6 +48,7 @@ public class LocaleUtils {
 
     /**
      * 获取用户设置的Locale
+     *
      * @param pContext Context
      * @return Locale
      */
@@ -46,8 +57,10 @@ public class LocaleUtils {
         String _LocaleJson = _SpLocale.getString(LOCALE_KEY, "");
         return jsonToLocale(_LocaleJson);
     }
+
     /**
      * 获取当前的Locale
+     *
      * @param pContext Context
      * @return Locale
      */
@@ -60,20 +73,24 @@ public class LocaleUtils {
         }
         return _Locale;
     }
+
     /**
      * 保存用户设置的Locale
-     * @param pContext Context
+     *
+     * @param pContext    Context
      * @param pUserLocale Locale
      */
     public static void saveUserLocale(Context pContext, Locale pUserLocale) {
-        SharedPreferences _SpLocal=pContext.getSharedPreferences(LOCALE_FILE, Context.MODE_PRIVATE);
-        SharedPreferences.Editor _Edit=_SpLocal.edit();
+        SharedPreferences _SpLocal = pContext.getSharedPreferences(LOCALE_FILE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor _Edit = _SpLocal.edit();
         String _LocaleJson = localeToJson(pUserLocale);
         _Edit.putString(LOCALE_KEY, _LocaleJson);
         _Edit.apply();
     }
+
     /**
      * Locale转成json
+     *
      * @param pUserLocale UserLocale
      * @return json String
      */
@@ -81,8 +98,10 @@ public class LocaleUtils {
         Gson _Gson = new Gson();
         return _Gson.toJson(pUserLocale);
     }
+
     /**
      * json转成Locale
+     *
      * @param pLocaleJson LocaleJson
      * @return Locale
      */
@@ -90,9 +109,11 @@ public class LocaleUtils {
         Gson _Gson = new Gson();
         return _Gson.fromJson(pLocaleJson, Locale.class);
     }
+
     /**
      * 更新Locale
-     * @param pContext Context
+     *
+     * @param pContext       Context
      * @param pNewUserLocale New User Locale
      */
     public static void updateLocale(Context pContext, Locale pNewUserLocale) {
@@ -101,20 +122,44 @@ public class LocaleUtils {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 _Configuration.setLocale(pNewUserLocale);
             } else {
-                _Configuration.locale =pNewUserLocale;
+                _Configuration.locale = pNewUserLocale;
             }
             DisplayMetrics _DisplayMetrics = pContext.getResources().getDisplayMetrics();
             pContext.getResources().updateConfiguration(_Configuration, _DisplayMetrics);
             saveUserLocale(pContext, pNewUserLocale);
         }
     }
+
     /**
      * 判断需不需要更新
-     * @param pContext Context
+     *
+     * @param pContext       Context
      * @param pNewUserLocale New User Locale
      * @return true / false
      */
     public static boolean needUpdateLocale(Context pContext, Locale pNewUserLocale) {
         return pNewUserLocale != null && !getCurrentLocale(pContext).equals(pNewUserLocale);
+    }
+
+
+    /**
+     * 获取手机出厂时默认的densityDpi
+     */
+    public static int getDefaultDisplayDensity() {
+        try {
+            Class aClass = Class.forName("android.view.WindowManagerGlobal");
+            Method method = aClass.getMethod("getWindowManagerService");
+            method.setAccessible(true);
+            Object iwm = method.invoke(aClass);
+            Method getInitialDisplayDensity = iwm.getClass().getMethod("getInitialDisplayDensity", int.class);
+            getInitialDisplayDensity.setAccessible(true);
+            Object densityDpi = getInitialDisplayDensity.invoke(iwm, Display.DEFAULT_DISPLAY);
+            Log.i(TAG, "getDefaultDisplayDensity: densityDpi="+densityDpi);
+            return (int) densityDpi;
+        } catch (Exception e) {
+            Log.e(TAG, "getDefaultDisplayDensity: ", e);
+            e.printStackTrace();
+            return -1;
+        }
     }
 }

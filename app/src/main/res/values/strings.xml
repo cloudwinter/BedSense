@@ -1,4 +1,57 @@
 <resources>
+
+
+    <!-- common -->
+    <string name="exit">Press the back key again to exit the app</string>
+    <string name="tongbukz_on">SYNCHR ON</string>
+    <string name="tongbukz_off">SYNCHR OFF</string>
+
+    <string name="text_enter">Enter</string>
+    <string name="blue_equipment">Bluetooth device</string>
+    <string name="search_blue_equipment">Scan Nearby Bluetooth devices</string>
+    <string name="searching">searching...</string>
+
+    <string name="connecting">connecting...</string>
+    <string name="please_wait">Please later...</string>
+    <string name="please_input">Please enter a number</string>
+
+
+    <string name="device_no_connected">Device Not Connected</string>
+    <string name="device_disconnect">Device disConnected please reconnected</string>
+    <string name="debug_switch">debug switch</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+
+    <!-- dialog -->
+    <string name="connected_failed">The connection failed. Please try to reconnect</string>
+    <string name="dialog_title_disconnect">Disconnected or not</string>
+    <string name="dialog_negetive">cancel</string>
+    <string name="dialog_positive">sure</string>
+    <string name="dialog_confirm">Confirm</string>
+
+
+    <!-- 蓝牙设备/设置界面 -->
+    <string name="connecting_device">Connect Device</string>
+    <string name="not_connected">Not Connected</string>
+    <string name="connected">Connected</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="click_to_connect">Click to connect</string>
+    <string name="lighting_time">Lighting time</string>
+    <string name="switch_language">Switch Language</string>
+    <string name="french">French</string>
+    <string name="english">English</string>
+    <string name="version">Version</string>
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="setting">Setting</string>
+    <string name="fault_debugging">Troubleshooting</string>
+    <string name="fault_part">Faulty component</string>
+    <string name="fault_type">Fault type</string>
+    <string name="alarm">Alarm setting</string>
+    <string name="sync">Sync control</string>
+
+
+
     <string name="Bluetooth_connection_failed">Bluetooth connection failed</string>
     <string name="Disconnect_not">Disconnect or not</string>
     <string name="unlink">Bluetooth disconnected</string>

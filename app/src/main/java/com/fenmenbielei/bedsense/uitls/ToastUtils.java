@@ -2,10 +2,12 @@ package com.fenmenbielei.bedsense.uitls;
 
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.wnhz.shidaodianqi.R;
+import com.sn.blackdianqi.view.SNToast;
+
 
 /**
  * Toast工具
@@ -15,9 +17,9 @@ import com.wnhz.shidaodianqi.R;
  */
 public class ToastUtils {
 
-    private static Toast mToast;
+    private static SNToast mToast;
 
-    private static Handler mhandler = new Handler();
+    private static Handler mhandler = new Handler(Looper.getMainLooper());
     private static Runnable r = new Runnable() {
         public void run() {
             mToast.cancel();
@@ -36,29 +38,34 @@ public class ToastUtils {
         showToast(context, context.getString(strId), lengthLong);
     }
 
-    public static void showNotEmptyToast(Context context, int keyStrId) {
-        showNotEmptyToast(context, context.getString(keyStrId));
-    }
 
-    public static void showNotEmptyToast(Context context, String keyText) {
-        showToast(context, keyText + context.getString(R.string.cannot_be_empty));
-    }
-
-    public static void showToast(Context context, String text, boolean lengthLong) {
+    public static void showToast(final Context context, final String text, boolean lengthLong) {
         if (TextUtils.isEmpty(text)) {
             return;
         }
         mhandler.removeCallbacks(r);
         if (null != mToast) {
-            mToast.setText(text);
+            mhandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mToast.setText(text);
+                    mToast.show();
+                }
+            });
         } else {
-            mToast = Toast.makeText(context, text, Toast.LENGTH_LONG);
+            mhandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    mToast = SNToast.makeText(context, text, Toast.LENGTH_LONG);
+                    mToast.show();
+                }
+            });
         }
         if (text.length() > 5) {
             lengthLong = true;
         }
         mhandler.postDelayed(r, lengthLong ? 1500 : 1000);
-        mToast.show();
+
     }
 
     /**

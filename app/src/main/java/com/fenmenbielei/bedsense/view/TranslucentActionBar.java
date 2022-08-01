@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.fenmenbielei.bedsense.impl.ActionBarClickListener;
 import com.wnhz.shidaodianqi.R;
 
 
@@ -208,5 +207,13 @@ public final class TranslucentActionBar extends LinearLayout {
             iconRight.setBackgroundResource(resIdRight);
             iconRight.setVisibility(View.VISIBLE);
         }
+    }
+
+
+    public interface ActionBarClickListener {
+
+        void onLeftClick();
+
+        void onRightClick();
     }
 }

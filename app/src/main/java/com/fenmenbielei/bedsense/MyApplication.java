@@ -9,12 +9,12 @@ import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.util.Base64;
 
-import com.fenmenbielei.bedsense.service.BluetoothLeService;
-import com.fenmenbielei.bedsense.uitls.LocaleUtils;
+import com.fenmenbielei.bedsense.blue.BluetoothLeService;
+import com.fenmenbielei.bedsense.core.AppUncaughtExceptionHandler;
 import com.fenmenbielei.bedsense.uitls.LogUtils;
-import com.fenmenbielei.bedsense.uitls.Prefer;
 import com.fenmenbielei.bedsense.uitls.ScreenUtils;
 import com.fenmenbielei.bedsense.uitls.file.FileUtils;
+import com.fenmenbielei.bedsense.view.LoggerView;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.HashCodeFileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
@@ -25,11 +25,6 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.decode.BaseImageDecoder;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.utils.StorageUtils;
-import com.tencent.bugly.Bugly;
-import com.tencent.bugly.crashreport.CrashReport;
-
-
-import org.xutils.x;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -47,6 +42,7 @@ public class MyApplication extends Application {
     private static final String TAG = "MyApplication";
 
     public static final boolean isDebug = true;//是否为调试模式
+
     private static MyApplication instance;
     private static Stack<Activity> activityStack = new Stack<>();
     //蓝牙4.0的UUID,其中0000ffe1-0000-1000-8000-00805f9b34fb是广州汇承信息科技有限公司08蓝牙模块的UUID
@@ -68,22 +64,28 @@ public class MyApplication extends Application {
         return instance;
     }
 
+
     @Override
     public void onCreate() {
         LogUtils.e("---", "[MyApplication] onCreate");
         super.onCreate();
         instance = this;
         RunningContext.init(this);
+        AppUncaughtExceptionHandler.getInstance().init(this);
         initImageLoader();
         initFilePath();
         // Initializes Bluetooth adapter.
         // 获取手机本地的蓝牙适配器
         final BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         mBluetoothAdapter = bluetoothManager.getAdapter();
-        x.Ext.init(this);
-        initBugly();
-//默认英文
-        LocaleUtils.updateLocale(this, LocaleUtils.LOCALE_ENGLISH);
+
+        // 初始化Bugly
+        //initBugly();
+
+        // 初始化LoggerView
+        LoggerView.init(this);
+        //默认英文
+       // LocaleUtils.updateLocale(this, LocaleUtils.LOCALE_ENGLISH);
     }
 
     private void initImageLoader() {
@@ -137,28 +139,6 @@ public class MyApplication extends Application {
         activityStack.clear();
     }
 
-    //跳转到登录界面
-    public void gotoLoginActivity() {
-        Prefer.getInstance().clearData();
-        finishActivity();
-//
-//        Intent intent = new Intent();
-//        intent.setClass(this, LoginActivity.class);
-//        Bundle bundle = new Bundle();
-//        intent.putExtras(bundle);
-//        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//        startActivity(intent);
-    }
-
-    //退出登录
-    public void exit(Activity activity) {
-        Prefer.getInstance().clearData();
-        finishActivity();
-        if (activity != null && !activity.isFinishing()) {
-            activity.finish();
-        }
-    }
-
 
     //把list集合转为String
     public static String SceneList2String(List SceneList) throws IOException {
@@ -188,29 +168,5 @@ public class MyApplication extends Application {
         objectInputStream.close();
         return SceneList;
     }
-
-    private void initBugly() {
-        /* Bugly SDK初始化
-         * 参数1：上下文对象
-         * 参数2：APPID，平台注册时得到,注意替换成你的appId
-         * 参数3：是否开启调试模式，调试模式下会输出'CrashReport'tag的日志
-         * 注意：如果您之前使用过Bugly SDK，请将以下这句注释掉。
-         */
-        CrashReport.UserStrategy strategy = new CrashReport.UserStrategy(getApplicationContext());
-        strategy.setAppVersion("1");
-        strategy.setAppPackageName("com.wnhz.shidaodianqi");
-        strategy.setAppReportDelay(20000);                          //Bugly会在启动20s后联网同步数据
-
-        /*  第三个参数为SDK调试模式开关，调试模式的行为特性如下：
-            输出详细的Bugly SDK的Log；
-            每一条Crash都会被立即上报；
-            自定义日志将会在Logcat中输出。
-            建议在测试阶段建议设置成true，发布时设置为false。*/
-
-        CrashReport.initCrashReport(getApplicationContext(), "a8c7c54c59", true, strategy);
-
-        Bugly.init(getApplicationContext(), "a8c7c54c59", false);
-    }
-
 
 }

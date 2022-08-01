@@ -2,8 +2,12 @@ package com.fenmenbielei.bedsense.uitls;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
 
 import com.fenmenbielei.bedsense.MyApplication;
+import com.fenmenbielei.bedsense.bean.AlarmBean;
+import com.fenmenbielei.bedsense.bean.DeviceBean;
+import com.google.gson.Gson;
 
 
 /**
@@ -25,8 +29,15 @@ public class Prefer {
     private final String KEY_M4 = "KEY_M4";
     private final String KEY_M5 = "KEY_M5";
     private final String KEY_BLESTATUS = "KEY_BLESTATUS";
+    private final String KEY_BLECONNECTDEVICE = "KEY_KEY_BLECONNECTDEVICE";
     private final String KEY_NEEDGUIDE = "KEY_NEEDGUIDE";
     private final String KEY_DECICE = "KEY_DECICE";
+    private final String KEY_LANGUAGE = "KEY_LANGUAGE";
+    private final String KEY_ALARM = "KEY_ALARM"; // 闹钟
+    private final String KEY_SHISHI = "KEY_SHISHI"; // 实时数据
+    private final String KEY_STARTDATAENTRY = "KEY_STARTDATAENTRY"; // 睡眠数据录入实时数据
+    private final String KEY_TONGBUKZ_SHOW = "KEY_TONGBUKZ_SHOW"; // 同步控制是否显示
+    private final String KEY_TONGBUKZ_SWITCH = "KEY_TONGBUKZ_SWITCH"; // 同步控制开关
 
     public static Prefer getInstance() {
         if (null == mInstance) {
@@ -37,6 +48,27 @@ public class Prefer {
 
     private Prefer() {
         mPref = MyApplication.getInstance().getSharedPreferences(PREFERENCE_FILE, Context.MODE_PRIVATE);
+    }
+
+
+    /**
+     * zh/en/fr
+     *
+     * @param language
+     */
+    public void setSelectedLanguage(String language) {
+        SharedPreferences.Editor editor = mPref.edit();
+        editor.putString(KEY_LANGUAGE, language);
+        editor.commit();
+    }
+
+    /**
+     * 获取当前选中语言
+     *
+     * @return
+     */
+    public String getSelectedLanguage() {
+        return mPref.getString(KEY_LANGUAGE, "en");
     }
 
 
@@ -65,6 +97,7 @@ public class Prefer {
     public String isTypeLan() {
         return mPref.getString(KEY_TYPE_LAN, "");
     }
+
     /**
      * M1
      */
@@ -142,32 +175,172 @@ public class Prefer {
     }
 
     //蓝牙连接状态
-    public void setBleStatus(String bleStatus) {
+    public void setBleStatus(String bleStatus, DeviceBean deviceBean) {
         SharedPreferences.Editor editor = mPref.edit();
         editor.putString(KEY_BLESTATUS, bleStatus);
+        if (bleStatus.equals("未连接")) {
+            editor.putString(KEY_BLECONNECTDEVICE, "");
+        } else {
+            String json = new Gson().toJson(deviceBean);
+            LogUtils.d("Prefer", "setBleStatus:" + json);
+            editor.putString(KEY_BLECONNECTDEVICE, json);
+        }
         editor.commit();
+    }
+
+    /**
+     * 获取当前选中的device
+     *
+     * @return
+     */
+    public DeviceBean getConnectedDevice() {
+        String value = mPref.getString(KEY_BLECONNECTDEVICE, "");
+        if (TextUtils.isEmpty(value)) {
+            return null;
+        }
+        DeviceBean deviceBean = null;
+        try {
+            deviceBean = new Gson().fromJson(value, DeviceBean.class);
+        } catch (Exception e) {
+            LogUtils.e("Prefer", e.getMessage());
+            e.printStackTrace();
+        }
+        return deviceBean;
     }
 
     public String getBleStatus() {
         return mPref.getString(KEY_BLESTATUS, "未连接");
     }
 
+    /**
+     * 判断蓝牙是否连接
+     *
+     * @return
+     */
+    public boolean isBleConnected() {
+        String status = mPref.getString(KEY_BLESTATUS, "未连接");
+        if (status.equals("未连接")) {
+            return false;
+        }
+        return true;
+    }
+
     //蓝牙当前地址
-    public void setCurrentDecice(String decice) {
+    public void setLatelyConnectedDevice(String deviceAddress) {
         SharedPreferences.Editor editor = mPref.edit();
-        editor.putString(KEY_DECICE, decice);
+        editor.putString(KEY_DECICE, deviceAddress);
         editor.commit();
     }
 
-    public String getCurrentDecice() {
+    public String getLatelyConnectedDevice() {
         return mPref.getString(KEY_DECICE, "");
+    }
+
+
+    /**
+     * 保存蓝牙信息
+     *
+     * @param deviceAddress
+     * @param alarmBean
+     */
+    public void setAlarm(String deviceAddress, AlarmBean alarmBean) {
+        SharedPreferences.Editor editor = mPref.edit();
+        String valueJson = new Gson().toJson(alarmBean);
+        editor.putString(KEY_DECICE + deviceAddress, valueJson);
+        editor.commit();
+    }
+
+    /**
+     * 获取蓝牙配置信息
+     *
+     * @param deviceAddress
+     * @return
+     */
+    public AlarmBean getAlarm(String deviceAddress) {
+        String value = mPref.getString(KEY_DECICE + deviceAddress, null);
+        if (TextUtils.isEmpty(value)) {
+            return null;
+        }
+        return new Gson().fromJson(value, AlarmBean.class);
+    }
+
+
+    public void setTongbukzShow(String deviceAddress, boolean show) {
+        SharedPreferences.Editor editor = mPref.edit();
+        editor.putBoolean(KEY_TONGBUKZ_SHOW + deviceAddress, show);
+        editor.commit();
+    }
+
+
+    public boolean getTongbukzShow(String deviceAddress) {
+        return mPref.getBoolean(KEY_TONGBUKZ_SHOW + deviceAddress, false);
+    }
+
+
+    public void setTongbukzSwitch(String deviceAddress, boolean switchStatus) {
+        SharedPreferences.Editor editor = mPref.edit();
+        editor.putBoolean(KEY_TONGBUKZ_SWITCH + deviceAddress, switchStatus);
+        editor.commit();
+    }
+
+
+    public boolean getTongbukzSwitch(String deviceAddress) {
+        return mPref.getBoolean(KEY_TONGBUKZ_SWITCH + deviceAddress, false);
+    }
+
+
+    /**
+     * 删除数据
+     *
+     * @param deviceAddress
+     */
+    public void removeAlarm(String deviceAddress) {
+        if (TextUtils.isEmpty(deviceAddress)) {
+            return;
+        }
+        SharedPreferences.Editor editor = mPref.edit();
+        editor.remove(KEY_DECICE + deviceAddress);
+        editor.commit();
+    }
+
+
+    public void setShowShishiData(boolean show) {
+        SharedPreferences.Editor editor = mPref.edit();
+        editor.putBoolean(KEY_SHISHI, show);
+        editor.commit();
+    }
+
+    public boolean getShowShishiData() {
+        return mPref.getBoolean(KEY_SHISHI, false);
+    }
+
+
+    public void setStartDataEntrySwitch(boolean show) {
+        SharedPreferences.Editor editor = mPref.edit();
+        editor.putBoolean(KEY_STARTDATAENTRY, show);
+        editor.commit();
+    }
+
+    public boolean getStartDataEntrySwitch() {
+        return mPref.getBoolean(KEY_STARTDATAENTRY, false);
+    }
+
+
+
+    public void disConnected() {
+        setBleStatus("未连接", null);
+        String address  = getLatelyConnectedDevice();
+        if (address != null) {
+            setLatelyConnectedDevice("");
+            removeAlarm(address);
+        }
     }
 
 
     //退出登录后清除缓存数据
     public void clearData() {
-//        String setBleStatus = getBleStatus();
-        String currentDecice = getCurrentDecice();
+        String currentDevice = getLatelyConnectedDevice();
+        String language = getSelectedLanguage();
 
         //清楚数据
         SharedPreferences.Editor editor = mPref.edit();
@@ -175,7 +348,7 @@ public class Prefer {
         editor.commit();
 
         //重新写入
-//        setBleStatus(setBleStatus);
-        setCurrentDecice(currentDecice);
+        setLatelyConnectedDevice(currentDevice);
+        setSelectedLanguage(language);
     }
 }

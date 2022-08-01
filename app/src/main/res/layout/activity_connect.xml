@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="蓝牙设备"
+                android:text="@string/blue_equipment"
                 android:textColor="@color/white"
                 android:textSize="14sp" />
 
@@ -58,11 +58,6 @@
                 android:textColor="@color/set_right_text"
                 android:textSize="13sp" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_set_right"
-                android:visibility="gone" />
         </LinearLayout>
 
         <TextView
@@ -74,12 +69,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:visibility="gone" />
     </LinearLayout>
 
     <TextView
@@ -88,7 +77,7 @@
         android:layout_height="50dp"
         android:background="@color/bg_hui"
         android:gravity="center"
-        android:text="扫描附近设备"
+        android:text="@string/search_blue_equipment"
         android:textColor="@color/white"
         android:textSize="15sp"
         android:layout_alignParentBottom="true"

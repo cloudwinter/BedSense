@@ -1,9 +1,8 @@
 package com.fenmenbielei.bedsense.uitls;
 
-import android.util.Log;
 
-import com.fenmenbielei.bedsense.MyApplication;
-
+import com.sn.blackdianqi.MyApplication;
+import com.sn.blackdianqi.view.LoggerView;
 
 /**
  *  Created by wanghongchuang
@@ -19,7 +18,7 @@ public class LogUtils {
             for(String str: strs){
                 sb.append(str);
             }
-            Log.i(tag, sb.toString());
+            LoggerView.i(tag, sb.toString());
         }
     }
 
@@ -29,7 +28,7 @@ public class LogUtils {
             for(String str: strs){
                 sb.append(str);
             }
-            Log.v(tag, sb.toString());
+            LoggerView.v(tag, sb.toString());
         }
     }
 
@@ -39,7 +38,7 @@ public class LogUtils {
             for(String str: strs){
                 sb.append(str);
             }
-            Log.d(tag, sb.toString());
+            LoggerView.d(tag, sb.toString());
         }
     }
 
@@ -49,7 +48,7 @@ public class LogUtils {
             for(String str: strs){
                 sb.append(str);
             }
-            Log.w(tag, sb.toString());
+            LoggerView.w(tag, sb.toString());
         }
     }
 
@@ -59,7 +58,7 @@ public class LogUtils {
             for(String str: strs){
                 sb.append(str);
             }
-            Log.e(tag, sb.toString());
+            LoggerView.e(tag, sb.toString());
         }
     }
 }

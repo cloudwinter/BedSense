@@ -1,4 +1,4 @@
-package com.fenmenbielei.bedsense.service;
+package com.fenmenbielei.bedsense.blue;
 
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
@@ -17,8 +17,8 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-
-import com.fenmenbielei.bedsense.uitls.LogUtils;
+import com.sn.blackdianqi.util.LogUtils;
+import com.sn.blackdianqi.util.Prefer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +81,7 @@ public class BluetoothLeService extends Service {
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED)//连接失败
             {
                 //在每次连接服务的时候， 或则断开后及时把之前的服务关闭掉
+                LogUtils.e("==广播更新连接状态==", "Connected to GATT server. STATE_DISCONNECTED ");
                 if(mBluetoothGatt != null){
                     mBluetoothGatt.disconnect();
                     mBluetoothGatt.close();
@@ -115,10 +116,13 @@ public class BluetoothLeService extends Service {
         @Override
         public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
             if (status == BluetoothGatt.GATT_SUCCESS) {
-                // LogUtils.e("==特征值的读写==", "--onCharacteristicRead called--");
                 //从特征值读取数据
-                byte[] sucString = characteristic.getValue();
-                String string = new String(sucString);
+                byte[] data = characteristic.getValue();
+                final StringBuilder stringBuilder = new StringBuilder(data.length);
+                for (byte byteChar : data) {
+                    stringBuilder.append(String.format("%02X ", byteChar));
+                }
+                LogUtils.e("BluetoothLeService onCharacteristicRead ==特征值的读回调==", stringBuilder.toString());
                 //将数据通过广播到Ble_Activity
                 broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
             }
@@ -130,7 +134,12 @@ public class BluetoothLeService extends Service {
         @Override
         public void onCharacteristicChanged(BluetoothGatt gatt,
                                             BluetoothGattCharacteristic characteristic) {
-            System.out.println("++++++++++++++++");
+            byte[] data = characteristic.getValue();
+            final StringBuilder stringBuilder = new StringBuilder(data.length);
+            for (byte byteChar : data) {
+                stringBuilder.append(String.format("%02X ", byteChar));
+            }
+            LogUtils.e("BluetoothLeService onCharacteristicChanged ==接收到硬件返回的数据==", stringBuilder.toString());
             broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
 
         }
@@ -142,9 +151,15 @@ public class BluetoothLeService extends Service {
         public void onCharacteristicWrite(BluetoothGatt gatt,
                                           BluetoothGattCharacteristic characteristic, int status) {
 
-            // LogUtils.e("==特征值的写==", "--onCharacteristicWrite--: " + status);
+            //从特征值读取数据
+//            byte[] data = characteristic.getValue();
+//            final StringBuilder stringBuilder = new StringBuilder(data.length);
+//            for (byte byteChar : data) {
+//                stringBuilder.append(String.format("%02X ", byteChar));
+//            }
+//            LogUtils.e("BluetoothLeService onCharacteristicRead ==特征值的写回调==", stringBuilder.toString());
             // 以下语句实现 发送完数据或也显示到界面上
-            broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
+            //broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic);
         }
 
         /*
@@ -216,10 +231,10 @@ public class BluetoothLeService extends Service {
             final StringBuilder stringBuilder = new StringBuilder(data.length);
             for (byte byteChar : data) {
                 stringBuilder.append(String.format("%02X ", byteChar));
-                LogUtils.e("==具体的数据==", "" + byteChar);
+                //LogUtils.e("==具体的数据==", "" + byteChar);
             }
             LogUtils.e("==从特征值获取返回的数据==", "" + stringBuilder);
-            intent.putExtra(EXTRA_DATA, "" + stringBuilder);
+            intent.putExtra(EXTRA_DATA, stringBuilder.toString().toUpperCase());
         }
         sendBroadcast(intent);
     }
@@ -231,14 +246,45 @@ public class BluetoothLeService extends Service {
     }
 
     @Override
+    public void onCreate() {
+        super.onCreate();
+        LogUtils.e("BluetoothLeService","BluetoothLeService 调用onCreate方法");
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        LogUtils.e("BluetoothLeService","BluetoothLeService 调用onStartCommand方法");
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
     public IBinder onBind(Intent intent) {
+        LogUtils.e("BluetoothLeService","BluetoothLeService 调用onBind方法");
         return mBinder;
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-        close();
+        LogUtils.e("BluetoothLeService","BluetoothLeService 调用unbind方法");
+        //close();
         return super.onUnbind(intent);
+    }
+
+    @Override
+    public void onTaskRemoved(Intent rootIntent) {
+        LogUtils.e("BluetoothLeService","BluetoothLeService 调用onTaskRemoved方法");
+        super.onTaskRemoved(rootIntent);
+    }
+
+    @Override
+    public void onDestroy() {
+        LogUtils.e("BluetoothLeService","BluetoothLeService 调用onDestroy方法");
+        // 断开连接
+        disconnect();
+        // 关闭
+        close();
+        Prefer.getInstance().setBleStatus("未连接",null);
+        super.onDestroy();
     }
 
     private final IBinder mBinder = new LocalBinder();
@@ -357,6 +403,7 @@ public class BluetoothLeService extends Service {
      * @Description: TODO(关闭所有蓝牙连接)
      */
     public void close() {
+        LogUtils.e("BluetoothLeService 执行close方法");
         if (mBluetoothGatt == null) {
             return;
         }
@@ -396,7 +443,7 @@ public class BluetoothLeService extends Service {
             return;
         }
         mBluetoothGatt.writeCharacteristic(characteristic);
-        LogUtils.e("==写入特征值==", "" + characteristic);
+        //LogUtils.e("==写入特征值==", "" + characteristic);
     }
 
     // 读取RSSi

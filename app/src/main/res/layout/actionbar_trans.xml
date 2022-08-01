@@ -3,7 +3,6 @@
     android:id="@+id/lay_transroot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/bg_hui"
     android:orientation="vertical">
 
     <!--android:background="@color/colorPrimary"-->
@@ -17,7 +16,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -43,7 +42,7 @@
                 android:layout_toRightOf="@+id/iv_actionbar_left"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:text="返回"
+                android:text=""
                 android:visibility="gone" />
         </RelativeLayout>
 
@@ -52,8 +51,8 @@
             style="@style/text_white"
             android:layout_centerInParent="true"
             android:gravity="center"
-            android:text="扫描连接设备"
-            android:textSize="18sp" />
+            android:text=""
+            android:textSize="18dp" />
 
         <RelativeLayout
             android:id="@+id/lay_actionbar_right"
@@ -65,8 +64,8 @@
 
             <ImageView
                 android:id="@+id/iv_actionbar_right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="12dp" />
 
@@ -77,8 +76,8 @@
                 android:layout_marginRight="12dp"
                 android:gravity="center_vertical"
                 android:singleLine="true"
-                android:text="保存"
-                android:textSize="13sp"
+                android:text=""
+                android:textSize="13dp"
                 android:visibility="gone" />
         </RelativeLayout>
     </RelativeLayout>

@@ -42,13 +42,19 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.fenmenbielei.bedsense.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity
+            android:name="com.fenmenbielei.bedsense.activity.ConnectActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name="com.fenmenbielei.bedsense.HaoHuaBanActivity"
             android:screenOrientation="portrait" />
@@ -57,9 +63,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.fenmenbielei.bedsense.SettingActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.fenmenbielei.bedsense.ui.ConnectActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.fenmenbielei.bedsense.ui.QrCodeActivity"
