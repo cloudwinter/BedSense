@@ -10,55 +10,30 @@ import android.content.ServiceConnection;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.sn.blackdianqi.MyApplication;
-import com.sn.blackdianqi.R;
-import com.sn.blackdianqi.RunningContext;
-import com.sn.blackdianqi.adapter.TabPagerAdapter;
-import com.sn.blackdianqi.base.BaseActivity;
-import com.sn.blackdianqi.base.BaseFragment;
-import com.sn.blackdianqi.bean.AlarmBean;
-import com.sn.blackdianqi.bean.DateBean;
-import com.sn.blackdianqi.bean.DeviceBean;
-import com.sn.blackdianqi.bean.MessageEvent;
-import com.sn.blackdianqi.blue.BluetoothLeService;
-import com.sn.blackdianqi.fragment.AnmoFragment;
-import com.sn.blackdianqi.fragment.DengguangFragment;
-import com.sn.blackdianqi.fragment.KuaijieK11Fragment;
-import com.sn.blackdianqi.fragment.KuaijieK1Fragment;
-import com.sn.blackdianqi.fragment.KuaijieK2Fragment;
-import com.sn.blackdianqi.fragment.KuaijieK3Fragment;
-import com.sn.blackdianqi.fragment.KuaijieK4Fragment;
-import com.sn.blackdianqi.fragment.KuaijieK5Fragment;
-import com.sn.blackdianqi.fragment.KuaijieK8Fragment;
-import com.sn.blackdianqi.fragment.KuaijieK9Fragment;
-import com.sn.blackdianqi.fragment.SmartSleepFragment;
-import com.sn.blackdianqi.fragment.WeitiaoW10Fragment;
-import com.sn.blackdianqi.fragment.WeitiaoW11Fragment;
-import com.sn.blackdianqi.fragment.WeitiaoW12Fragment;
-import com.sn.blackdianqi.fragment.WeitiaoW13Fragment;
-import com.sn.blackdianqi.fragment.WeitiaoW14Fragment;
-import com.sn.blackdianqi.fragment.WeitiaoW1Fragment;
-import com.sn.blackdianqi.fragment.WeitiaoW2Fragment;
-import com.sn.blackdianqi.fragment.WeitiaoW3Fragment;
-import com.sn.blackdianqi.fragment.WeitiaoW4Fragment;
-import com.sn.blackdianqi.fragment.WeitiaoW6Fragment;
-import com.sn.blackdianqi.fragment.WeitiaoW7Fragment;
-import com.sn.blackdianqi.fragment.WeitiaoW8Fragment;
-import com.sn.blackdianqi.util.BlueUtils;
-import com.sn.blackdianqi.util.LogUtils;
-import com.sn.blackdianqi.util.Prefer;
-import com.sn.blackdianqi.util.ToastUtils;
-import com.sn.blackdianqi.view.NoScrollViewPager;
-import com.sn.blackdianqi.view.TranslucentActionBar;
+
+import com.fenmenbielei.bedsense.MyApplication;
+import com.fenmenbielei.bedsense.RunningContext;
+import com.fenmenbielei.bedsense.adapter.TabPagerAdapter;
+import com.fenmenbielei.bedsense.base.BaseActivity;
+import com.fenmenbielei.bedsense.base.BaseFragment;
+import com.fenmenbielei.bedsense.bean.AlarmBean;
+import com.fenmenbielei.bedsense.bean.DateBean;
+import com.fenmenbielei.bedsense.bean.DeviceBean;
+import com.fenmenbielei.bedsense.bean.MessageEvent;
+import com.fenmenbielei.bedsense.blue.BluetoothLeService;
+import com.fenmenbielei.bedsense.uitls.BlueUtils;
+import com.fenmenbielei.bedsense.uitls.LogUtils;
+import com.fenmenbielei.bedsense.uitls.Prefer;
+import com.fenmenbielei.bedsense.uitls.ToastUtils;
+import com.fenmenbielei.bedsense.view.NoScrollViewPager;
+import com.fenmenbielei.bedsense.view.TranslucentActionBar;
+import com.wnhz.shidaodianqi.R;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -75,7 +50,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     public static final String TAG = "HomeActivity";
 
     // 设置tab个数
-    private final static int tabCount = 5;
+    private final static int tabCount = 4;
 
     @BindView(R.id.actionbar)
     TranslucentActionBar actionBar;
@@ -87,50 +62,33 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
     NoScrollViewPager viewPager;
 
     @BindView(R.id.tab1)
-    LinearLayout tab1;
-    @BindView(R.id.tab1_img)
-    ImageView tab1Img;
+    RelativeLayout tab1;
     @BindView(R.id.tab1_text)
     TextView tab1TextView;
 
     @BindView(R.id.tab2)
-    LinearLayout tab2;
-    @BindView(R.id.tab2_img)
-    ImageView tab2Img;
+    RelativeLayout tab2;
     @BindView(R.id.tab2_text)
     TextView tab2TextView;
 
 
     @BindView(R.id.tab3)
-    LinearLayout tab3;
-    @BindView(R.id.tab3_img)
-    ImageView tab3Img;
+    RelativeLayout tab3;
     @BindView(R.id.tab3_text)
     TextView tab3TextView;
 
 
     @BindView(R.id.tab4)
-    LinearLayout tab4;
-    @BindView(R.id.tab4_img)
-    ImageView tab4Img;
+    RelativeLayout tab4;
     @BindView(R.id.tab4_text)
     TextView tab4TextView;
 
-    @BindView(R.id.tab5)
-    LinearLayout tab5;
-    @BindView(R.id.tab5_img)
-    ImageView tab5Img;
-    @BindView(R.id.tab5_text)
-    TextView tab5TextView;
 
     List<TextView> tabTextViews;
-    List<ImageView> tabImageViews;
 
     List<BaseFragment> fragments;
     TabPagerAdapter tabPagerAdapter;
 
-    // 特征值
-    protected BluetoothGattCharacteristic characteristic;
 
     private String blueName;
 
@@ -175,12 +133,13 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         }
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
-        actionBar.setData(null, R.mipmap.ic_back, null, R.mipmap.ic_set, null, this);
+        actionBar.setData("", R.mipmap.ic_default_return, null, R.mipmap.ic_default_set, null, this);
         actionBar.setStatusBarHeight(getStatusBarHeight());
         DeviceBean deviceBean = Prefer.getInstance().getConnectedDevice();
         if (deviceBean != null) {
             blueName = deviceBean.getTitle();
             deviceAddress = deviceBean.getAddress();
+            actionBar.setTitle(blueName);
         }
         LogUtils.e(TAG, "当前连接的蓝牙名称为：" + blueName);
         initView();
@@ -196,13 +155,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
                 askStatus();
             }
         });
-        // FIXME 测试
-//        tab5.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                tab5.setVisibility(View.VISIBLE);
-//            }
-//        },2000L);
     }
 
     private void initView() {
@@ -210,20 +162,12 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         tab2.setOnClickListener(this);
         tab3.setOnClickListener(this);
         tab4.setOnClickListener(this);
-        tab5.setOnClickListener(this);
         tabTextViews = new ArrayList<>();
         tabTextViews.add(tab1TextView);
         tabTextViews.add(tab2TextView);
         tabTextViews.add(tab3TextView);
         tabTextViews.add(tab4TextView);
-        tabTextViews.add(tab5TextView);
 
-        tabImageViews = new ArrayList<>();
-        tabImageViews.add(tab1Img);
-        tabImageViews.add(tab2Img);
-        tabImageViews.add(tab3Img);
-        tabImageViews.add(tab4Img);
-        tabImageViews.add(tab5Img);
 
         fragments = new ArrayList<>();
         setFragments();
@@ -231,83 +175,23 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         viewPager.setAdapter(tabPagerAdapter);
         viewPager.setScroll(true);
         viewPager.setOffscreenPageLimit(3);
-
-        if (!TextUtils.isEmpty(blueName) && blueName.toUpperCase().contains("QMS2")) {
-            tab3.setVisibility(View.GONE);
-        }
     }
 
 
     private void setFragments() {
-        if (TextUtils.isEmpty(blueName)) {
-            fragments.add(new KuaijieK1Fragment());
-            fragments.add(new WeitiaoW1Fragment());
-        } else if (blueName.contains("QMS-IQ") || blueName.contains("QMS-I06")
-                || blueName.contains("QMS-I16") || blueName.contains("QMS-I26") || blueName.contains("QMS-I36")
-                || blueName.contains("QMS-I46") || blueName.contains("QMS-I56") || blueName.contains("QMS-I66")
-                || blueName.contains("QMS-I76") || blueName.contains("QMS-I86") || blueName.contains("QMS-I96")
-                || blueName.contains("QMS-L04") || blueName.contains("QMS-L14") || blueName.contains("QMS-L24")
-                || blueName.contains("QMS-L34") || blueName.contains("QMS-L44") || blueName.contains("QMS-L54")
-                || blueName.contains("QMS-L64") || blueName.contains("QMS-L74") || blueName.contains("QMS-L84")
-                || blueName.contains("QMS-L94")
-                || blueName.contains("QMS-LQ")) {
-            fragments.add(new KuaijieK1Fragment());
-            fragments.add(new WeitiaoW1Fragment());
-        } else if (blueName.contains("QMS-JQ-D") || blueName.contains("QMS4") || blueName.contains("S4-N")) {
-            fragments.add(new KuaijieK2Fragment());
-            fragments.add(new WeitiaoW2Fragment());
-        } else if (blueName.contains("QMS-NQ") || blueName.contains("QMS3")) {
-            fragments.add(new KuaijieK2Fragment());
-            fragments.add(new WeitiaoW3Fragment());
-        } else if (blueName.contains("QMS-MQ") || blueName.contains("QMS2")) {
-            fragments.add(new KuaijieK2Fragment());
-            fragments.add(new WeitiaoW4Fragment());
-        } else if (blueName.contains("QMS-KQ-H") || blueName.contains("QMS-H02")) {
-            fragments.add(new KuaijieK3Fragment());
-            fragments.add(new WeitiaoW6Fragment());
-        } else if (blueName.contains("QMS-DFQ") || blueName.contains("QMS-430") || blueName.contains("QMS-444")) {
-            fragments.add(new KuaijieK4Fragment());
-            fragments.add(new WeitiaoW7Fragment());
-        } else if (blueName.contains("QMS-DQ") || blueName.contains("QMS-443")) {
-            fragments.add(new KuaijieK5Fragment());
-            fragments.add(new WeitiaoW8Fragment());
-        } else if (blueName.contains("S3-2")) {
-            fragments.add(new KuaijieK2Fragment());
-            fragments.add(new WeitiaoW10Fragment());
-        } else if (blueName.contains("S3-3")) {
-            fragments.add(new KuaijieK8Fragment());
-            fragments.add(new WeitiaoW11Fragment());
-        } else if (blueName.contains("S3-4")) {
-            fragments.add(new KuaijieK9Fragment());
-            fragments.add(new WeitiaoW11Fragment());
-        } else if (blueName.contains("S4-Y") || blueName.contains("S5-Y") || blueName.contains("S6-Y")) {
-            fragments.add(new KuaijieK11Fragment());
-            if (blueName.contains("S4-Y")) {
-                fragments.add(new WeitiaoW12Fragment());
-            } else if (blueName.contains("S5-Y")) {
-                fragments.add(new WeitiaoW13Fragment());
-            } else if (blueName.contains("S6-Y")) {
-                fragments.add(new WeitiaoW14Fragment());
-            }
-        } else {
-            fragments.add(new KuaijieK1Fragment());
-            fragments.add(new WeitiaoW1Fragment());
-        }
-
+        fragments.add(new KuaijieK2Fragment());
+        fragments.add(new WeitiaoW4Fragment());
         fragments.add(new AnmoFragment());
         fragments.add(new DengguangFragment());
-        fragments.add(new SmartSleepFragment());
     }
 
     private void setCurrentTab(int tabIndex) {
         int position = tabIndex - 1;
         for (int i = 0; i < tabCount; i++) {
             if (position == i) {
-                tabTextViews.get(i).setSelected(true);
-                tabImageViews.get(i).setSelected(true);
+                tabTextViews.get(i).setBackground(getDrawable(R.drawable.ic_kuaijie_selected));
             } else {
-                tabTextViews.get(i).setSelected(false);
-                tabImageViews.get(i).setSelected(false);
+                tabTextViews.get(i).setBackground(getDrawable(R.drawable.ic_weitiao_bg));
             }
         }
         viewPager.setCurrentItem(position, false);
@@ -315,9 +199,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
     private void askStatus() {
         try {
-            Thread.sleep(500L);
-            // 发送压力带指令
-            sendStressInitCmd();
             Thread.sleep(500L);
             // 发送闹钟指令
             sendAlarmInitCmd();
@@ -328,12 +209,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         }
     }
 
-    /**
-     * 发送压力带指令
-     */
-    private void sendStressInitCmd() {
-        sendBlueCmd("FFFFFFFF02000E0B001704");
-    }
 
     /**
      * 发送闹钟初始化命令
@@ -370,9 +245,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
             LogUtils.i(TAG, "sendBlueCmd -> 蓝牙未连接");
             return;
         }
-        if (characteristic == null) {
-            characteristic = MyApplication.getInstance().gattCharacteristic;
-        }
+        BluetoothGattCharacteristic characteristic = MyApplication.getInstance().gattCharacteristic;
         if (characteristic == null) {
             LogUtils.i(TAG, "sendBlueCmd -> 特征值未获取到");
             return;
@@ -392,10 +265,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         } else if (cmd.contains("FFFFFFFF01000413")) {
             LogUtils.i(TAG, "收到有闹钟指令：" + cmd);
             setHasAlarm(cmd);
-        } else if (cmd.contains("FFFFFFFF02000E0B")) {
-            LogUtils.i(TAG, "收到智能睡眠感应回码指令：" + cmd);
-            tab5.setVisibility(View.VISIBLE);
-            RunningContext.sleepTimer = cmd.substring(16, 18);
         } else if (cmd.contains("FFFFFFFF01000A0B") || cmd.contains("FFFFFFFF0100090B")) {
             Prefer.getInstance().setTongbukzShow(deviceAddress, true);
             String tongbukzSwitchCmd = cmd.substring(16, 18);
@@ -474,22 +343,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
                 // 发送灯光指令
                 sendBlueCmd("FFFFFFFF050005FF23C728");
                 break;
-            case R.id.tab5:
-                setCurrentTab(5);
-                RunningContext.threadPool().execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            // 发送智能睡眠页面指令
-                            sendBlueCmd("FFFFFFFF02000A0A1204");
-                            Thread.sleep(500);
-                            sendBlueCmd("FFFFFFFF02000E0B001704");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-                break;
             default:
                 break;
         }
@@ -513,7 +366,9 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
             LogUtils.i(TAG, "监听到蓝牙状态 ：" + action);
-            if (action == BluetoothLeService.ACTION_GATT_DISCONNECTED) {
+            if (action == BluetoothLeService.ACTION_GATT_CONNECTED) {
+                LogUtils.e(TAG, "监听到蓝牙状态 ：已连接");
+            } else if (action == BluetoothLeService.ACTION_GATT_DISCONNECTED) {
                 // 监听到蓝牙已断开
                 LogUtils.e(TAG, "监听到蓝牙状态 ：已断开");
                 Prefer.getInstance().disConnected();
@@ -524,7 +379,6 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
                 if (bundle != null) {
                     String data = bundle.getString(BluetoothLeService.EXTRA_DATA);
                     if (data != null) {
-//                            data = "FFFFFFFF01000A0B011304";
                         LogUtils.e(TAG, "==首页  接收设备返回的数据==", data);
                         handleReceiveData(data);
                     }

@@ -51,6 +51,34 @@
     <string name="sync">Sync control</string>
 
 
+    <!-- 蓝牙设备/设置界面 -->
+    <string name="setting_title">Setting</string>
+    <string name="connecting_device">Connect Device</string>
+    <string name="not_connected">Not Connected</string>
+    <string name="connected">Connected</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="click_to_connect">Click to connect</string>
+    <string name="alarm">Alarm setting</string>
+
+    <string name="open_alarm">Open</string>
+    <string name="close_alarm">Close</string>
+    <string name="sde_dialog_btn_cancel">Cancel</string>
+
+
+    <!-- 蓝牙设置 -->
+    <string name="no_contect_right">not connected</string>
+    <string name="no_contect">bluetooth device is not connected</string>
+    <string name="bluetooth_status">Bluetooth state</string>
+    <string name="get_permission">Gets the current location permission</string>
+    <string name="setting_permission">In - application Settings - permissions - allow the application to obtain mobile location permissions</string>
+    <string name="open">Immediately open</string>
+    <string name="back_adjust_down">It has been adjusted to the maximum</string>
+
+
+    <string name="agree">Click enter as agreed</string>
+    <string name="ysi">privacy policy</string>
+
+
 
     <string name="Bluetooth_connection_failed">Bluetooth connection failed</string>
     <string name="Disconnect_not">Disconnect or not</string>

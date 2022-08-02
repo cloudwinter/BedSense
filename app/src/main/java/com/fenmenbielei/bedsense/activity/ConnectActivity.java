@@ -29,7 +29,6 @@ import android.widget.TextView;
 
 import com.fenmenbielei.bedsense.MyApplication;
 import com.fenmenbielei.bedsense.RunningContext;
-import com.fenmenbielei.bedsense.SettingActivity;
 import com.fenmenbielei.bedsense.adapter.BlueDeviceListAdapter;
 import com.fenmenbielei.bedsense.base.BaseActivity;
 import com.fenmenbielei.bedsense.bean.DeviceBean;

@@ -1,6 +1,13 @@
 package com.fenmenbielei.bedsense.adapter;
 
 
+import com.fenmenbielei.bedsense.base.BaseFragment;
+
+import java.util.List;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 public class TabPagerAdapter extends FragmentPagerAdapter {
