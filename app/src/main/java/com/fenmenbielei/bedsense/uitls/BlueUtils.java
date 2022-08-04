@@ -2,8 +2,9 @@ package com.fenmenbielei.bedsense.uitls;
 
 import android.text.TextUtils;
 
-import com.sn.blackdianqi.MyApplication;
-import com.sn.blackdianqi.blue.BluetoothLeService;
+
+import com.fenmenbielei.bedsense.MyApplication;
+import com.fenmenbielei.bedsense.blue.BluetoothLeService;
 
 import java.util.HashMap;
 import java.util.Map;

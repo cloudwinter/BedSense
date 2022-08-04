@@ -12,12 +12,14 @@
     <View
         android:id="@+id/v_statusbar"
         android:layout_width="match_parent"
-        android:layout_height="1.0dp" />
+        android:layout_height="1.0dp"
+        android:background="#303030"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#303030">
 
         <RelativeLayout
             android:id="@+id/lay_actionbar_left"

@@ -16,9 +16,10 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.SweepGradient;
-import android.support.annotation.IntDef;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
+
+import androidx.annotation.IntDef;
 
 public class CircleProgressBar extends ProgressBar {
     private static final int LINE = 0;

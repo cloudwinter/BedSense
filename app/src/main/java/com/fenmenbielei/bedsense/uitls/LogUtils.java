@@ -1,8 +1,8 @@
 package com.fenmenbielei.bedsense.uitls;
 
 
-import com.sn.blackdianqi.MyApplication;
-import com.sn.blackdianqi.view.LoggerView;
+import com.fenmenbielei.bedsense.MyApplication;
+import com.fenmenbielei.bedsense.view.LoggerView;
 
 /**
  *  Created by wanghongchuang

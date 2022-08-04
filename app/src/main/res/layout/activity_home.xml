@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.sddq.sophie.view.TranslucentActionBar
+    <com.fenmenbielei.bedsense.view.TranslucentActionBar
         android:id="@+id/actionbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.sddq.sophie.view.NoScrollViewPager
+        <com.fenmenbielei.bedsense.view.NoScrollViewPager
             android:id="@+id/vp_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

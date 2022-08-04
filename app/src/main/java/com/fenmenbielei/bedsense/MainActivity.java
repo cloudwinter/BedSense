@@ -15,8 +15,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
-import com.fenmenbielei.bedsense.activity.ConnectActivity;
 import com.fenmenbielei.bedsense.activity.HomeActivity;
 import com.fenmenbielei.bedsense.base.BaseActivity;
 import com.fenmenbielei.bedsense.uitls.BlueUtils;
@@ -32,7 +32,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     private final static int PERMISSION_REQUEST_COARSE_LOCATION = 3;
 
     @BindView(R.id.tv_lianjie)
-    LinearLayout viewEnter;
+    RelativeLayout viewEnter;
     @BindView(R.id.img_logo)
     ImageView imageView;
 
@@ -86,7 +86,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                     startActivity(intent);
                 } else {
                     // 跳转到蓝牙搜索和连接界面
-                    Intent intent = new Intent(MainActivity.this, ConnectActivity.class);
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                     intent.putExtra("from","main");
                     startActivity(intent);
                 }

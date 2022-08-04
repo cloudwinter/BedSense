@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <attr name="title" format="reference|string" />
+    <attr name="bgnormal" format="reference" />
+    <attr name="bgselected" format="reference" />
+    <attr name="icon" format="reference" />
+    <attr name="desc" format="reference|string" />
+
     <declare-styleable name="ColorArcProgressBar">
         <attr name="back_color" format="color"/>
         <attr name="front_color1" format="color"/>
@@ -17,6 +24,41 @@
         <attr name="current_value" format="float"/>
         <attr name="max_value" format="float"/>
 
+    </declare-styleable>
+
+
+
+    <declare-styleable name="JiyiView">
+        <attr name="title" />
+        <attr name="bgnormal" />
+        <attr name="bgselected" />
+    </declare-styleable>
+
+    <declare-styleable name="AnjianYuanView">
+        <attr name="title" />
+        <attr name="icon" />
+        <attr name="bgnormal" />
+        <attr name="bgselected" />
+        <attr name="pratio" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="SyncControlSwitchView">
+        <attr name="title" />
+    </declare-styleable>
+
+    <declare-styleable name="ProlateItemView">
+        <attr name="title" />
+        <attr name="desc" />
+    </declare-styleable>
+
+    <declare-styleable name="ProlateItemSwitchView">
+        <attr name="title" />
+        <attr name="desc" />
+    </declare-styleable>
+
+
+    <declare-styleable name="ProlateSwitchView">
+        <attr name="title" />
     </declare-styleable>
     
 </resources>

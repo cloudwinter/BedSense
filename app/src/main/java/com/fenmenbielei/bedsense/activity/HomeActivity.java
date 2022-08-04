@@ -27,6 +27,8 @@ import com.fenmenbielei.bedsense.bean.DateBean;
 import com.fenmenbielei.bedsense.bean.DeviceBean;
 import com.fenmenbielei.bedsense.bean.MessageEvent;
 import com.fenmenbielei.bedsense.blue.BluetoothLeService;
+import com.fenmenbielei.bedsense.fragment.KuaijieBaseFragment;
+import com.fenmenbielei.bedsense.fragment.KuaijieK1Fragment;
 import com.fenmenbielei.bedsense.uitls.BlueUtils;
 import com.fenmenbielei.bedsense.uitls.LogUtils;
 import com.fenmenbielei.bedsense.uitls.Prefer;
@@ -179,19 +181,19 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
 
     private void setFragments() {
-        fragments.add(new KuaijieK2Fragment());
-        fragments.add(new WeitiaoW4Fragment());
-        fragments.add(new AnmoFragment());
-        fragments.add(new DengguangFragment());
+        fragments.add(new KuaijieK1Fragment());
+        fragments.add(new KuaijieK1Fragment());
+        fragments.add(new KuaijieK1Fragment());
+        fragments.add(new KuaijieK1Fragment());
     }
 
     private void setCurrentTab(int tabIndex) {
         int position = tabIndex - 1;
         for (int i = 0; i < tabCount; i++) {
             if (position == i) {
-                tabTextViews.get(i).setBackground(getDrawable(R.drawable.ic_kuaijie_selected));
+                tabTextViews.get(i).setBackgroundColor(getColor(R.color.tab_selected));
             } else {
-                tabTextViews.get(i).setBackground(getDrawable(R.drawable.ic_weitiao_bg));
+                tabTextViews.get(i).setBackgroundColor(getColor(R.color.bg_hui));
             }
         }
         viewPager.setCurrentItem(position, false);

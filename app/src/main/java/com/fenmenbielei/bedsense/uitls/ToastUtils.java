@@ -6,7 +6,7 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.widget.Toast;
 
-import com.sn.blackdianqi.view.SNToast;
+import com.fenmenbielei.bedsense.view.SNToast;
 
 
 /**

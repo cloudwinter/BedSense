@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#000000</color>
     <color name="white">#c0a86f</color>
+    <color name="green">#c0a86f</color>
     <color name="black">#111633</color>
     <color name="blue_52">#5169F9</color>
     <color name="bg_hui">#5b5857</color>
@@ -11,6 +12,8 @@
     <color name="dingbu">#3c3a3d</color>
     <color name="blue">#d24930</color>
     <color name="bg_main">#938b8a</color>
+
+    <color name="tab_selected">#CE341F</color>
 
 
     <color name="text41">#212121</color>
@@ -20,5 +23,8 @@
     <color name="text_write">#c0a86f</color>
     <color name="set_right_text">#c0a86f</color>
     <color name="translate_half">#50000000</color>
+
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_green">#59B84D</color>
 
 </resources>

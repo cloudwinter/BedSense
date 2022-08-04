@@ -11,9 +11,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.fenmenbielei.bedsense.base.BaseActivity;
-import com.fenmenbielei.bedsense.impl.ActionBarClickListener;
-import com.fenmenbielei.bedsense.ui.LanguageActivity;
-import com.fenmenbielei.bedsense.ui.QrCodeActivity;
 import com.fenmenbielei.bedsense.uitls.BlueUtils;
 import com.fenmenbielei.bedsense.uitls.Prefer;
 import com.fenmenbielei.bedsense.uitls.SystemUtils;
@@ -103,7 +100,7 @@ public class SettingActivity extends BaseActivity implements TranslucentActionBa
                 break;
             //二维码
             case R.id.ll_qr_code:
-                startActivity(new Intent(SettingActivity.this, QrCodeActivity.class));
+                //startActivity(new Intent(SettingActivity.this, QrCodeActivity.class));
                 break;
             //是否震动
             case R.id.sw_on_off:
@@ -120,7 +117,7 @@ public class SettingActivity extends BaseActivity implements TranslucentActionBa
                 break;
             //切换语言
             case R.id.ll_language:
-                startActivity(new Intent(SettingActivity.this, LanguageActivity.class));
+                //startActivity(new Intent(SettingActivity.this, LanguageActivity.class));
                 break;
             //使用说明
             case R.id.ll_privacy:
