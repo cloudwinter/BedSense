@@ -139,7 +139,7 @@
                     android:layout_marginLeft="@dimen/weitiao_marin"
                     android:layout_marginRight="@dimen/weitiao_marin"
                     app:bgnormal="@drawable/ic_kuaijie_normal"
-                    app:icon="@drawable/ic_yijiankandianshi"
+                    app:icon="@drawable/ic_jiaobu"
                     app:title="@string/tuibutiaozheng"
                     android:layout_weight="1"/>
             </LinearLayout>
