@@ -42,6 +42,13 @@
         <attr name="pratio" format="float"/>
     </declare-styleable>
 
+    <declare-styleable name="AnjianTuoYuanView">
+        <attr name="title" />
+        <attr name="icon" />
+        <attr name="bgnormal" />
+        <attr name="bgselected" />
+    </declare-styleable>
+
     <declare-styleable name="SyncControlSwitchView">
         <attr name="title" />
     </declare-styleable>
