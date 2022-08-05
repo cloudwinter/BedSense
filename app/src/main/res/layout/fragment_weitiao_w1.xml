@@ -59,13 +59,13 @@
                     android:id="@+id/img_anjian_top_icon"
                     android:layout_width="55dp"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_yijiankandianshi" />
+                    android:background="@drawable/ic_beibu" />
 
                 <TextView
                     android:id="@+id/text_anjian_top_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/watch_tv"
+                    android:text="@string/beibutiaozheng"
                     android:textColor="@color/green"
                     android:textSize="15sp" />
             </LinearLayout>
