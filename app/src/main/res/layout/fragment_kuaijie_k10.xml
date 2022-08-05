@@ -65,6 +65,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/watch_tv"
                     android:textColor="@color/green"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:textSize="15sp" />
             </LinearLayout>
         </FrameLayout>
