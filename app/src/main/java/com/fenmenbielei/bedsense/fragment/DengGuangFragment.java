@@ -61,7 +61,7 @@ public class DengGuangFragment extends BaseFragment implements OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_hhkuai_jie, container, false);
+        View view = inflater.inflate(R.layout.fragment_dengguang, container, false);
         ButterKnife.bind(this, view);
         initView();
         return view;

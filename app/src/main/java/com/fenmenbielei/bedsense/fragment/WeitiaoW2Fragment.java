@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
 import com.fenmenbielei.bedsense.view.AnjianChangTuoYuanView;
 import com.fenmenbielei.bedsense.view.AnjianWeitiaoView;
 import com.fenmenbielei.bedsense.view.ChildTouchListener;
@@ -29,7 +30,7 @@ import butterknife.ButterKnife;
 /**
  * 微调
  */
-public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTouchListener {
+public class WeitiaoW2Fragment extends WeitiaoBaseFragment implements View.OnTouchListener {
 
     public static final String TAG = "WeitiaoFragment";
 
@@ -48,8 +49,8 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
     LinearLayout tiaozhengLayout;
     @BindView(R.id.view_beibutiaozheng)
     AnjianWeitiaoView beibutiaozhengView;
-    @BindView(R.id.view_tunbutiaozheng)
-    AnjianWeitiaoView tunbutiaozhengView;
+    @BindView(R.id.view_yaobutiaozheng)
+    AnjianWeitiaoView yaobutiaozhengView;
     @BindView(R.id.view_tuobutiaozheng)
     AnjianWeitiaoView tuobutiaozhengView;
     @BindView(R.id.view_tuibutiaozheng)
@@ -60,8 +61,8 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
     LinearLayout xunhuanLayout;
     @BindView(R.id.view_quanshengxunhuan)
     AnjianChangTuoYuanView quanshengxunhuanView;
-    @BindView(R.id.view_tunbuxunhuan)
-    AnjianChangTuoYuanView tunbuxunhuanView;
+    @BindView(R.id.view_yaobuxunhuan)
+    AnjianChangTuoYuanView yaobuxunhuanView;
     @BindView(R.id.view_toubuxunhuan)
     AnjianChangTuoYuanView toubuxunhuanView;
     @BindView(R.id.view_tuibuxunhuan)
@@ -80,7 +81,7 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreateView: ");
-        View view = inflater.inflate(R.layout.fragment_weitiao_w1, container, false);
+        View view = inflater.inflate(R.layout.fragment_weitiao_w2, container, false);
         ButterKnife.bind(this, view);
         initView();
         return view;
@@ -100,7 +101,7 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
         });
         headLayout.setOnTouchListener(this);
         quanshengxunhuanView.setOnTouchListener(this);
-        tunbuxunhuanView.setOnTouchListener(this);
+        yaobuxunhuanView.setOnTouchListener(this);
         toubuxunhuanView.setOnTouchListener(this);
         tuibuxunhuanView.setOnTouchListener(this);
 
@@ -111,10 +112,10 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                     setTitle(R.string.beibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 03 97 01");
                     setTopIconAndTitle(R.drawable.ic_beibu, R.string.beibutiaozheng);
-                } else if (isUPorCancel(event.getAction())) {
+                } else if (MotionEvent.ACTION_UP == event.getAction()) {
                     setTopIconAndTitle(R.drawable.ic_beibu, R.string.beibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-//                    stopAnimation();
+                    stopAnimation();
                 }
             }
 
@@ -124,38 +125,38 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                     setTitle(R.string.beibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 04 D6 C3");
                     setTopIconAndTitle(R.drawable.ic_beibu, R.string.beibutiaozheng);
-                } else if (isUPorCancel(event.getAction())) {
+                } else if (MotionEvent.ACTION_UP == event.getAction()) {
                     setTopIconAndTitle(R.drawable.ic_beibu, R.string.beibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-//                    stopAnimation();
+                    stopAnimation();
                 }
             }
         });
 
-        tunbutiaozhengView.setChildTouchListener(new ChildTouchListener() {
+        yaobutiaozhengView.setChildTouchListener(new ChildTouchListener() {
             @Override
             public void onTopTouch(MotionEvent event) {
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
-                    setTitle(R.string.tunbutiaozheng);
+                    setTitle(R.string.yaobutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 0D 16 C5");
-                    setTopIconAndTitle(R.drawable.ic_tunbu, R.string.tunbutiaozheng);
-                } else if (isUPorCancel(event.getAction())) {
-                    setTopIconAndTitle(R.drawable.ic_tunbu, R.string.tunbutiaozheng);
+                    setTopIconAndTitle(R.drawable.ic_tunbu, R.string.yaobutiaozheng);
+                } else if (MotionEvent.ACTION_UP == event.getAction()) {
+                    setTopIconAndTitle(R.drawable.ic_tunbu, R.string.yaobutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-//                    stopAnimation();
+                    stopAnimation();
                 }
             }
 
             @Override
             public void onBottomTouch(MotionEvent event) {
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
-                    setTitle(R.string.tunbutiaozheng);
+                    setTitle(R.string.yaobutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 0E 56 C4");
-                    setTopIconAndTitle(R.drawable.ic_tunbu, R.string.tunbutiaozheng);
-                } else if (isUPorCancel(event.getAction())) {
-                    setTopIconAndTitle(R.drawable.ic_tunbu, R.string.tunbutiaozheng);
+                    setTopIconAndTitle(R.drawable.ic_tunbu, R.string.yaobutiaozheng);
+                } else if (MotionEvent.ACTION_UP == event.getAction()) {
+                    setTopIconAndTitle(R.drawable.ic_tunbu, R.string.yaobutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-//                    stopAnimation();
+                    stopAnimation();
                 }
             }
         });
@@ -167,10 +168,10 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                     setTitle(R.string.toubutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 01 16 C0");
                     setTopIconAndTitle(R.drawable.ic_toubu, R.string.toubutiaozheng);
-                } else if (isUPorCancel(event.getAction())) {
+                } else if (MotionEvent.ACTION_UP == event.getAction()) {
                     setTopIconAndTitle(R.drawable.ic_toubu, R.string.toubutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-//                    stopAnimation();
+                    stopAnimation();
                 }
             }
 
@@ -180,10 +181,10 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                     setTitle(R.string.toubutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 02 56 C1");
                     setTopIconAndTitle(R.drawable.ic_toubu, R.string.toubutiaozheng);
-                } else if (isUPorCancel(event.getAction())) {
+                } else if (MotionEvent.ACTION_UP == event.getAction()) {
                     setTopIconAndTitle(R.drawable.ic_toubu, R.string.toubutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-//                    stopAnimation();
+                    stopAnimation();
                 }
             }
         });
@@ -194,12 +195,11 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.tuibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 06 57 02");
-//                    startAnimation(R.drawable.weitiao_tuibu_top_animation);
                     setTopIconAndTitle(R.drawable.ic_yijiankandianshi, R.string.tuibutiaozheng);
                 } else if (isUPorCancel(event.getAction())) {
                     setTopIconAndTitle(R.drawable.ic_yijiankandianshi, R.string.tuibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-//                    stopAnimation();
+                    stopAnimation();
                 }
             }
 
@@ -212,19 +212,11 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                 } else if (isUPorCancel(event.getAction())) {
                     setTopIconAndTitle(R.drawable.ic_yijiankandianshi, R.string.tuibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-                    //stopAnimation();
+                    stopAnimation();
                 }
             }
         });
 
-    }
-
-
-    @Override
-    public void onTongbukzEvent(boolean show, boolean open) {
-        tongbukzView.setVisibility(show ? View.VISIBLE : View.GONE);
-        tongbukzView.setSelected(open);
-        tongbukzView.setTitle(open ? getString(R.string.tongbukz_on) : getString(R.string.tongbukz_off));
     }
 
     private void startAnimation(int animationId) {
@@ -238,6 +230,13 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
             animationDrawable.stop();
             animationDrawable = null;
         }
+    }
+
+    @Override
+    public void onTongbukzEvent(boolean show, boolean open) {
+        tongbukzView.setVisibility(show ? View.VISIBLE : View.GONE);
+        tongbukzView.setSelected(open);
+        tongbukzView.setTitle(open ? getString(R.string.tongbukz_on) : getString(R.string.tongbukz_off));
     }
 
     /**
@@ -280,7 +279,7 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                     sendBlueCmd("FF FF FF FF 05 00 05 00 E4 C7 4A");
                 }
                 break;
-            case R.id.view_tunbuxunhuan:
+            case R.id.view_yaobuxunhuan:
                 setTopIconAndTitle(R.drawable.ic_tunbu_light, R.string.tunbuxunhuan);
                 if (MotionEvent.ACTION_DOWN == action) {
                     sendBlueCmd("FF FF FF FF 05 00 05 00 E6 46 8B");

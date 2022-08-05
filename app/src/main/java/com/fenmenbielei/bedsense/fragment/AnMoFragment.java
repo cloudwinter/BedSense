@@ -109,7 +109,7 @@ public class AnMoFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_hhan_mo, container, false);
+        View view = inflater.inflate(R.layout.fragment_anmo, container, false);
         ButterKnife.bind(this, view);
         initView();
         return view;
