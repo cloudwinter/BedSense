@@ -56,8 +56,8 @@ public class WebActivity extends BaseActivity implements TranslucentActionBar.Ac
     protected void onResume() {
         super.onResume();
         actionBar.setTitle(getString(R.string.ysi));
-        String url = "file:///android_res/mipmap/img_ysxy.jpeg";
-        webView.loadUrl(url);
+//        String url = "file:///android_res/mipmap/img_ysxy.jpeg";
+        webView.loadUrl("http://www.tri-mix.net/bedsense.html");
     }
 
     @Override

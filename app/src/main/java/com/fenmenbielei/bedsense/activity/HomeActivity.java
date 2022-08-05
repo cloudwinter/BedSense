@@ -10,6 +10,7 @@ import android.content.ServiceConnection;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -27,8 +28,20 @@ import com.fenmenbielei.bedsense.bean.DateBean;
 import com.fenmenbielei.bedsense.bean.DeviceBean;
 import com.fenmenbielei.bedsense.bean.MessageEvent;
 import com.fenmenbielei.bedsense.blue.BluetoothLeService;
+import com.fenmenbielei.bedsense.fragment.AnMoFragment;
+import com.fenmenbielei.bedsense.fragment.DengGuangFragment;
 import com.fenmenbielei.bedsense.fragment.KuaijieBaseFragment;
+import com.fenmenbielei.bedsense.fragment.KuaijieK10Fragment;
 import com.fenmenbielei.bedsense.fragment.KuaijieK1Fragment;
+import com.fenmenbielei.bedsense.fragment.KuaijieK2Fragment;
+import com.fenmenbielei.bedsense.fragment.KuaijieK9Fragment;
+import com.fenmenbielei.bedsense.fragment.WeitiaoW11Fragment;
+import com.fenmenbielei.bedsense.fragment.WeitiaoW15Fragment;
+import com.fenmenbielei.bedsense.fragment.WeitiaoW1Fragment;
+import com.fenmenbielei.bedsense.fragment.WeitiaoW2Fragment;
+import com.fenmenbielei.bedsense.fragment.WeitiaoW3Fragment;
+import com.fenmenbielei.bedsense.fragment.WeitiaoW4Fragment;
+import com.fenmenbielei.bedsense.fragment.WeitiaoW6Fragment;
 import com.fenmenbielei.bedsense.uitls.BlueUtils;
 import com.fenmenbielei.bedsense.uitls.LogUtils;
 import com.fenmenbielei.bedsense.uitls.Prefer;
@@ -96,6 +109,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
     private String deviceAddress;
 
+    private String title = "BEDSENSE-1150";
+
     @Override
     public void onLeftClick() {
         finish();
@@ -141,8 +156,8 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         if (deviceBean != null) {
             blueName = deviceBean.getTitle();
             deviceAddress = deviceBean.getAddress();
-            actionBar.setTitle(blueName);
         }
+        actionBar.setTitle(title);
         LogUtils.e(TAG, "当前连接的蓝牙名称为：" + blueName);
         initView();
         setCurrentTab(1);
@@ -181,10 +196,54 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
 
 
     private void setFragments() {
-        fragments.add(new KuaijieK1Fragment());
-        fragments.add(new KuaijieK1Fragment());
-        fragments.add(new KuaijieK1Fragment());
-        fragments.add(new KuaijieK1Fragment());
+        if (TextUtils.isEmpty(blueName)) {
+            fragments.add(new KuaijieK1Fragment());
+            fragments.add(new WeitiaoW1Fragment());
+        } else if (blueName.contains("QMS-IQ") || blueName.contains("QMS-I06")
+                || blueName.contains("QMS-I16") || blueName.contains("QMS-I26") || blueName.contains("QMS-I36")
+                || blueName.contains("QMS-I46") || blueName.contains("QMS-I56") || blueName.contains("QMS-I66")
+                || blueName.contains("QMS-I76") || blueName.contains("QMS-I86") || blueName.contains("QMS-I96")) {
+            fragments.add(new KuaijieK1Fragment());
+            fragments.add(new WeitiaoW1Fragment());
+            title = "BEDSENSE-1150";
+        } else if (blueName.contains("QMS-L04") || blueName.contains("QMS-L14") || blueName.contains("QMS-L24")
+                || blueName.contains("QMS-L34") || blueName.contains("QMS-L44") || blueName.contains("QMS-L54")
+                || blueName.contains("QMS-L64") || blueName.contains("QMS-L74") || blueName.contains("QMS-L84")
+                || blueName.contains("QMS-L94")
+                || blueName.contains("QMS-LQ")) {
+            fragments.add(new KuaijieK1Fragment());
+            fragments.add(new WeitiaoW1Fragment());
+            title = "BEDSENSE-1050";
+        } else if (blueName.contains("QMS-JQ-D") || blueName.contains("QMS4") || blueName.contains("S4-N")) {
+            fragments.add(new KuaijieK2Fragment());
+            fragments.add(new WeitiaoW2Fragment());
+            title = "BEDSENSE-890";
+        } else if (blueName.contains("QMS-NQ") || blueName.contains("QMS3")) {
+            fragments.add(new KuaijieK2Fragment());
+            fragments.add(new WeitiaoW3Fragment());
+            title = "BEDSENSE-850";
+        } else if (blueName.contains("QMS-MQ") || blueName.contains("QMS2")) {
+            fragments.add(new KuaijieK2Fragment());
+            fragments.add(new WeitiaoW4Fragment());
+            title = "BEDSENSE-150";
+        } else if (blueName.contains("QMS-KQ-H") || blueName.contains("QMS-H02")) {
+            fragments.add(new KuaijieK10Fragment());
+            fragments.add(new WeitiaoW6Fragment());
+            title = "BEDSENSE-350";
+        } else if (blueName.contains("S3-4")) {
+            fragments.add(new KuaijieK9Fragment());
+            fragments.add(new WeitiaoW11Fragment());
+            title = "S3-4";
+        } else if (blueName.contains("S4-2")) {
+            fragments.add(new KuaijieK9Fragment());
+            fragments.add(new WeitiaoW15Fragment());
+            title = "Permobil Resten Hi-Low";
+        } else {
+            fragments.add(new KuaijieK1Fragment());
+            fragments.add(new WeitiaoW1Fragment());
+        }
+        fragments.add(new AnMoFragment());
+        fragments.add(new DengGuangFragment());
     }
 
     private void setCurrentTab(int tabIndex) {

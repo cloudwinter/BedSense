@@ -574,22 +574,24 @@ public class ConnectActivity extends BaseActivity implements TranslucentActionBa
         blueNameList.add("QMS-KQ-H");
         blueNameList.add("QMS-H02");
 
-        blueNameList.add("QMS-DFQ");
-        blueNameList.add("QMS-430");
-        blueNameList.add("QMS-444");
+//        blueNameList.add("QMS-DFQ");
+//        blueNameList.add("QMS-430");
+//        blueNameList.add("QMS-444");
+//
+//        blueNameList.add("QMS-DQ");
+//        blueNameList.add("QMS-443");
 
-        blueNameList.add("QMS-DQ");
-        blueNameList.add("QMS-443");
-
-        blueNameList.add("S3-2");
-        blueNameList.add("S3-3");
+//        blueNameList.add("S3-2");
+//        blueNameList.add("S3-3");
         blueNameList.add("S3-4");
 
-        blueNameList.add("S4-Y");
-        blueNameList.add("S5-Y");
-        blueNameList.add("S6-Y");
+//        blueNameList.add("S4-Y");
+//        blueNameList.add("S5-Y");
+//        blueNameList.add("S6-Y");
+//
+//        blueNameList.add("S4-N");
 
-        blueNameList.add("S4-N");
+        blueNameList.add("S4-2");
 
         return blueNameList;
     }
