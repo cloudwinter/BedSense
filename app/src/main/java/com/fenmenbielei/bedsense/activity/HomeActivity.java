@@ -150,16 +150,16 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         }
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
-        actionBar.setData("", R.mipmap.ic_default_return, null, R.mipmap.ic_default_set, null, this);
+        actionBar.setData(title, R.mipmap.ic_default_return, null, R.mipmap.ic_default_set, null, this);
         actionBar.setStatusBarHeight(getStatusBarHeight());
         DeviceBean deviceBean = Prefer.getInstance().getConnectedDevice();
         if (deviceBean != null) {
             blueName = deviceBean.getTitle();
             deviceAddress = deviceBean.getAddress();
         }
-        actionBar.setTitle(title);
         LogUtils.e(TAG, "当前连接的蓝牙名称为：" + blueName);
         initView();
+        actionBar.setTitle(title);
         setCurrentTab(1);
 
         // 启动蓝牙service

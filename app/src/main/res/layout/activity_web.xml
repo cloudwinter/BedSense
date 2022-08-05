@@ -5,7 +5,7 @@
     android:background="@color/bg_hui"
     android:orientation="vertical">
 
-    <com.sddq.sophie.view.TranslucentActionBar
+    <com.fenmenbielei.bedsense.view.TranslucentActionBar
         android:id="@+id/actionbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
