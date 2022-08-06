@@ -184,7 +184,7 @@
                 android:layout_weight="1"
                 app:bgnormal="@drawable/ic_kuaijie_normal"
                 app:bgselected="@drawable/ic_kuaijie_selected"
-                app:icon="@drawable/xr_dingyao_xiao"
+                app:icon="@drawable/ic_yijianfuyuan"
                 app:title="@string/zhihan" />
 
             <View
