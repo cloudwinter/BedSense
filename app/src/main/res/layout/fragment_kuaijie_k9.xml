@@ -30,7 +30,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="15dp"
-            android:background="@drawable/img_default_bg">
+            android:background="@drawable/bg_top_donghua">
 
             <com.dinuscxj.progressbar.CircleProgressBar
                 android:id="@+id/custom_progress4"
@@ -38,7 +38,7 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center"
                 app:draw_progress_text="false"
-                app:progress_background_color="#E9B14F"
+                app:progress_background_color="@color/color_F9D577"
                 app:progress_end_color="#E9B14F"
                 app:progress_shader="sweep"
                 app:progress_start_color="#E9B14F"
@@ -90,12 +90,12 @@
 
                 <com.fenmenbielei.bedsense.view.JiyiView
                     android:id="@+id/view_jiyi1"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:orientation="horizontal"
                     app:title="@string/jiyi1"
-                    app:bgnormal="@drawable/ic_home_hhk"
-                    app:bgselected="@drawable/ic_home_ssk"
+                    app:bgnormal="@drawable/bg_jiyi_normal"
+                    app:bgselected="@drawable/bg_jiyi_normal"
                     />
 
             </LinearLayout>
@@ -116,12 +116,12 @@
 
                 <com.fenmenbielei.bedsense.view.JiyiView
                     android:id="@+id/view_jiyi2"
-                    android:layout_width="110dp"
-                    android:layout_height="110dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:orientation="horizontal"
                     app:title="@string/jiyi2"
-                    app:bgnormal="@drawable/ic_home_hhk"
-                    app:bgselected="@drawable/ic_home_ssk"
+                    app:bgnormal="@drawable/bg_jiyi_normal"
+                    app:bgselected="@drawable/bg_jiyi_normal"
                     />
 
             </LinearLayout>
@@ -143,8 +143,8 @@
                 android:id="@+id/view_kandianshi"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                app:bgnormal="@drawable/ic_kuaijie_normal"
-                app:bgselected="@drawable/ic_kuaijie_selected"
+                app:bgnormal="@drawable/bg_kuaijie_normal"
+                app:bgselected="@drawable/bg_kuaijie_selected"
                 app:icon="@drawable/ic_yijiankandianshi"
                 app:title="@string/kandianshi"
                 android:layout_weight="1"
@@ -159,8 +159,8 @@
                 android:id="@+id/view_lingyali"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_50"
-                app:bgnormal="@drawable/ic_kuaijie_normal"
-                app:bgselected="@drawable/ic_kuaijie_selected"
+                app:bgnormal="@drawable/bg_kuaijie_normal"
+                app:bgselected="@drawable/bg_kuaijie_selected"
                 app:icon="@drawable/ic_lingyalizhuangtai"
                 app:title="@string/kandianshi"
                 android:layout_weight="1"
@@ -181,8 +181,8 @@
                 android:id="@+id/view_zhihan"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_50"
-                app:bgnormal="@drawable/ic_kuaijie_normal"
-                app:bgselected="@drawable/ic_kuaijie_selected"
+                app:bgnormal="@drawable/bg_kuaijie_normal"
+                app:bgselected="@drawable/bg_kuaijie_selected"
                 app:icon="@drawable/ic_shuimianmoshi"
                 app:title="@string/zhihan"
                 android:layout_weight="1"
@@ -197,8 +197,8 @@
                 android:id="@+id/view_fuyuan"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_50"
-                app:bgnormal="@drawable/ic_kuaijie_normal"
-                app:bgselected="@drawable/ic_kuaijie_selected"
+                app:bgnormal="@drawable/bg_kuaijie_normal"
+                app:bgselected="@drawable/bg_kuaijie_selected"
                 app:icon="@drawable/ic_yijianfuyuan"
                 app:title="@string/fuyuan"
                 android:layout_weight="1"
@@ -218,8 +218,8 @@
                 android:id="@+id/view_yijiangshengqi"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_50"
-                app:bgnormal="@drawable/ic_kuaijie_normal"
-                app:bgselected="@drawable/ic_kuaijie_selected"
+                app:bgnormal="@drawable/bg_kuaijie_normal"
+                app:bgselected="@drawable/bg_kuaijie_selected"
                 app:icon="@drawable/xr_yijianshengqi_xiao"
                 app:title="@string/yijianshengqi"
                 android:layout_weight="1"
@@ -234,8 +234,8 @@
                 android:id="@+id/view_yijiangjiangxia"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dp_50"
-                app:bgnormal="@drawable/ic_kuaijie_normal"
-                app:bgselected="@drawable/ic_kuaijie_selected"
+                app:bgnormal="@drawable/bg_kuaijie_normal"
+                app:bgselected="@drawable/bg_kuaijie_selected"
                 app:icon="@drawable/xr_yijianjiangxia_xiao"
                 app:title="@string/yijianjiangxia"
                 android:layout_weight="1"
