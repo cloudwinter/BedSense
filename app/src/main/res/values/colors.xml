@@ -11,7 +11,13 @@
     <color name="bg_hui26">#262027</color>
     <color name="dingbu">#3c3a3d</color>
     <color name="blue">#d24930</color>
-    <color name="bg_main">#938b8a</color>
+    <color name="bg_main">#6A605F</color>
+    <color name="color_AEA0A1">#AEA0A1</color>
+    <color name="color_F9D577">#F9D577</color>
+    <color name="color_878382">#878382</color>
+    <color name="color_BFB9B8">#BFB9B8</color>
+    <color name="color_B59E6E">#B59E6E</color>
+    <color name="color_F00024">#F00024</color>
 
     <color name="tab_selected">#CE341F</color>
 

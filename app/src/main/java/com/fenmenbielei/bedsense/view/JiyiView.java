@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class JiyiView extends RelativeLayout {
     Context mContext;
 
     TextView titleTextView;
+    ImageView imgCircleView;
 
     int bgNormalRes = -1;
     int bgSelectedRes = -1;
@@ -47,6 +49,7 @@ public class JiyiView extends RelativeLayout {
         }
         //setOrientation(HORIZONTAL);
         View contentView = inflate(getContext(), R.layout.view_jiyi, this);
+        imgCircleView = contentView.findViewById(R.id.img_circle);
         titleTextView = contentView.findViewById(R.id.text_title);
         titleTextView.setText(title);
         if (bgNormalRes != -1) {
@@ -61,10 +64,12 @@ public class JiyiView extends RelativeLayout {
             if (bgSelectedRes != -1) {
                 setBackground(ContextCompat.getDrawable(mContext,bgSelectedRes));
             }
+            imgCircleView.setBackground(ContextCompat.getDrawable(mContext,R.drawable.bg_circle_selected));
         } else {
             if (bgNormalRes != -1) {
                 setBackground(ContextCompat.getDrawable(mContext,bgNormalRes));
             }
+            imgCircleView.setBackground(ContextCompat.getDrawable(mContext,R.drawable.bg_circle_normal));
         }
     }
 }
