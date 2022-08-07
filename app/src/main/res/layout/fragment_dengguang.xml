@@ -27,7 +27,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/img_default_bg">
+                android:background="@drawable/bg_top_donghua">
 
                 <com.dinuscxj.progressbar.CircleProgressBar
                     android:id="@+id/custom_progress4"
@@ -35,7 +35,7 @@
                     android:layout_height="150dp"
                     android:layout_gravity="center"
                     app:draw_progress_text="false"
-                    app:progress_background_color="#E9B14F"
+                    app:progress_background_color="@color/color_F9D577"
                     app:progress_end_color="#E9B14F"
                     app:progress_shader="sweep"
                     app:progress_start_color="#E9B14F"
@@ -55,9 +55,9 @@
             <LinearLayout
                 android:id="@+id/ll_first"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="25dp"
-                android:background="@drawable/ic_light_an"
+                android:background="@drawable/bg_kuaijie_normal"
                 android:gravity="center">
 
                 <TextView
@@ -72,9 +72,9 @@
             <LinearLayout
                 android:id="@+id/ll_two"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/ic_light_an"
+                android:background="@drawable/bg_kuaijie_normal"
                 android:gravity="center">
 
                 <TextView
@@ -89,9 +89,9 @@
             <LinearLayout
                 android:id="@+id/ll_third"
                 android:layout_width="200dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/ic_light_an"
+                android:background="@drawable/bg_kuaijie_normal"
                 android:gravity="center">
 
                 <TextView
