@@ -31,8 +31,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="30dp"
             android:layout_marginRight="15dp"
-            android:background="@drawable/img_default_bg"
-            >
+            android:background="@drawable/bg_top_donghua">
 
             <com.dinuscxj.progressbar.CircleProgressBar
                 android:id="@+id/custom_progress4"
@@ -40,7 +39,7 @@
                 android:layout_height="150dp"
                 android:layout_gravity="center"
                 app:draw_progress_text="false"
-                app:progress_background_color="#E9B14F"
+                app:progress_background_color="@color/color_F9D577"
                 app:progress_end_color="#E9B14F"
                 app:progress_shader="sweep"
                 app:progress_start_color="#E9B14F"
@@ -95,7 +94,7 @@
                     android:layout_marginLeft="@dimen/weitiao_marin"
                     android:layout_marginTop="@dimen/weitiao_marin"
                     android:layout_marginRight="@dimen/weitiao_marin"
-                    app:bgnormal="@drawable/ic_kuaijie_normal"
+                    app:bgnormal="@drawable/bg_kuaijie_normal"
                     app:icon="@drawable/ic_beibu"
                     app:title="@string/beibutiaozheng"
                     android:layout_weight="1"/>
@@ -107,7 +106,7 @@
                     android:layout_marginLeft="@dimen/weitiao_marin"
                     android:layout_marginRight="@dimen/weitiao_marin"
                     android:layout_marginTop="@dimen/weitiao_marin"
-                    app:bgnormal="@drawable/ic_kuaijie_normal"
+                    app:bgnormal="@drawable/bg_kuaijie_normal"
                     app:icon="@drawable/ic_yijianfuyuan"
                     app:title="@string/zhengtishengjiang"
                     android:layout_weight="1"/>
