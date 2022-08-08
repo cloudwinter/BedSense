@@ -162,7 +162,7 @@
                 app:bgnormal="@drawable/bg_kuaijie_normal"
                 app:bgselected="@drawable/bg_kuaijie_selected"
                 app:icon="@drawable/ic_lingyalizhuangtai"
-                app:title="@string/kandianshi"
+                app:title="@string/lingyali"
                 android:layout_weight="1"
                 />
 
