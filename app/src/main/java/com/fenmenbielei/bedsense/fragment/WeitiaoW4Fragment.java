@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.fenmenbielei.bedsense.view.AnjianWeitiaoView;
 import com.fenmenbielei.bedsense.view.ChildTouchListener;
 import com.fenmenbielei.bedsense.view.ProlateItemSwitchView;
@@ -82,8 +84,11 @@ public class WeitiaoW4Fragment extends WeitiaoBaseFragment {
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.beibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 03 97 01");
-                    setTopIconAndTitle(R.drawable.ic_beibu, R.string.beibutiaozheng);
+                    topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_top_img_placehoder));
+                    Glide.with(getContext()).load(R.drawable.beibutzf).diskCacheStrategy(DiskCacheStrategy.ALL).into(topIconImgView);
                 } else if (MotionEvent.ACTION_UP == event.getAction()) {
+                    topIconImgView.setImageDrawable(null);
+                    Glide.with(getContext()).clear(topIconImgView);
                     setTopIconAndTitle(R.drawable.ic_beibu, R.string.beibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
 //                    stopAnimation();
@@ -95,8 +100,11 @@ public class WeitiaoW4Fragment extends WeitiaoBaseFragment {
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.beibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 04 D6 C3");
-                    setTopIconAndTitle(R.drawable.ic_beibu, R.string.beibutiaozheng);
+                    topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_top_img_placehoder));
+                    Glide.with(getContext()).load(R.drawable.beibutzf).diskCacheStrategy(DiskCacheStrategy.ALL).into(topIconImgView);
                 } else if (isUPorCancel(event.getAction())) {
+                    topIconImgView.setImageDrawable(null);
+                    Glide.with(getContext()).clear(topIconImgView);
                     setTopIconAndTitle(R.drawable.ic_beibu, R.string.beibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
 //                    stopAnimation();
@@ -111,8 +119,11 @@ public class WeitiaoW4Fragment extends WeitiaoBaseFragment {
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.tuibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 06 57 02");
-                    setTopIconAndTitle(R.drawable.ic_jiaobu, R.string.tuibutiaozheng);
+                    topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_top_img_placehoder));
+                    Glide.with(getContext()).load(R.drawable.jiaobutzf).diskCacheStrategy(DiskCacheStrategy.ALL).into(topIconImgView);
                 } else if (isUPorCancel(event.getAction())) {
+                    topIconImgView.setImageDrawable(null);
+                    Glide.with(getContext()).clear(topIconImgView);
                     setTopIconAndTitle(R.drawable.ic_jiaobu, R.string.tuibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
                     stopAnimation();
@@ -124,8 +135,11 @@ public class WeitiaoW4Fragment extends WeitiaoBaseFragment {
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.tuibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 07 96 C2");
-                    setTopIconAndTitle(R.drawable.ic_jiaobu, R.string.tuibutiaozheng);
+                    topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_top_img_placehoder));
+                    Glide.with(getContext()).load(R.drawable.jiaobutz).diskCacheStrategy(DiskCacheStrategy.ALL).into(topIconImgView);;
                 } else if (isUPorCancel(event.getAction())) {
+                    topIconImgView.setImageDrawable(null);
+                    Glide.with(getContext()).clear(topIconImgView);
                     setTopIconAndTitle(R.drawable.ic_jiaobu, R.string.tuibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
                     stopAnimation();

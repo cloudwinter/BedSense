@@ -1,6 +1,9 @@
 package com.fenmenbielei.bedsense.fragment;
 
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,6 +17,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.Target;
+import com.bumptech.glide.request.transition.Transition;
+import com.fenmenbielei.bedsense.uitls.ScreenUtils;
 import com.fenmenbielei.bedsense.view.AnjianChangTuoYuanView;
 import com.fenmenbielei.bedsense.view.AnjianWeitiaoView;
 import com.fenmenbielei.bedsense.view.ChildTouchListener;
@@ -110,11 +119,14 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.beibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 03 97 01");
-                    setTopIconAndTitle(R.drawable.ic_beibu, R.string.beibutiaozheng);
+                    topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_top_img_placehoder));
+                    Glide.with(getContext()).load(R.drawable.beibutzf).diskCacheStrategy(DiskCacheStrategy.ALL).into(topIconImgView);
+
                 } else if (isUPorCancel(event.getAction())) {
+                    topIconImgView.setImageDrawable(null);
+                    Glide.with(getContext()).clear(topIconImgView);
                     setTopIconAndTitle(R.drawable.ic_beibu, R.string.beibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-//                    stopAnimation();
                 }
             }
 
@@ -123,8 +135,12 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.beibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 04 D6 C3");
-                    setTopIconAndTitle(R.drawable.ic_beibu, R.string.beibutiaozheng);
+                    topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_top_img_placehoder));
+                    Glide.with(getContext()).load(R.drawable.beibutz)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL).into(topIconImgView);
                 } else if (isUPorCancel(event.getAction())) {
+                    topIconImgView.setImageDrawable(null);
+                    Glide.with(getContext()).clear(topIconImgView);
                     setTopIconAndTitle(R.drawable.ic_beibu, R.string.beibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
 //                    stopAnimation();
@@ -138,8 +154,12 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.tunbutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 0D 16 C5");
-                    setTopIconAndTitle(R.drawable.ic_tunbu, R.string.tunbutiaozheng);
+                    topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_top_img_placehoder));
+                    Glide.with(getContext()).load(R.drawable.tunbutzf)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL).into(topIconImgView);
                 } else if (isUPorCancel(event.getAction())) {
+                    topIconImgView.setImageDrawable(null);
+                    Glide.with(getContext()).clear(topIconImgView);
                     setTopIconAndTitle(R.drawable.ic_tunbu, R.string.tunbutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
 //                    stopAnimation();
@@ -152,7 +172,12 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                     setTitle(R.string.tunbutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 0E 56 C4");
                     setTopIconAndTitle(R.drawable.ic_tunbu, R.string.tunbutiaozheng);
+                    topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_top_img_placehoder));
+                    Glide.with(getContext()).load(R.drawable.tunbutz)
+                            .diskCacheStrategy(DiskCacheStrategy.ALL).into(topIconImgView);
                 } else if (isUPorCancel(event.getAction())) {
+                    topIconImgView.setImageDrawable(null);
+                    Glide.with(getContext()).clear(topIconImgView);
                     setTopIconAndTitle(R.drawable.ic_tunbu, R.string.tunbutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
 //                    stopAnimation();
@@ -166,8 +191,11 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.toubutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 01 16 C0");
-                    setTopIconAndTitle(R.drawable.ic_toubu, R.string.toubutiaozheng);
+                    topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_top_img_placehoder));
+                    Glide.with(getContext()).load(R.drawable.toubutzf).diskCacheStrategy(DiskCacheStrategy.ALL).into(topIconImgView);;
                 } else if (isUPorCancel(event.getAction())) {
+                    topIconImgView.setImageDrawable(null);
+                    Glide.with(getContext()).clear(topIconImgView);
                     setTopIconAndTitle(R.drawable.ic_toubu, R.string.toubutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
 //                    stopAnimation();
@@ -179,8 +207,11 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.toubutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 02 56 C1");
-                    setTopIconAndTitle(R.drawable.ic_toubu, R.string.toubutiaozheng);
+                    topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_top_img_placehoder));
+                    Glide.with(getContext()).load(R.drawable.toubutz).diskCacheStrategy(DiskCacheStrategy.ALL).into(topIconImgView);
                 } else if (isUPorCancel(event.getAction())) {
+                    topIconImgView.setImageDrawable(null);
+                    Glide.with(getContext()).clear(topIconImgView);
                     setTopIconAndTitle(R.drawable.ic_toubu, R.string.toubutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
 //                    stopAnimation();
@@ -195,8 +226,11 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                     setTitle(R.string.tuibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 06 57 02");
 //                    startAnimation(R.drawable.weitiao_tuibu_top_animation);
-                    setTopIconAndTitle(R.drawable.ic_jiaobu, R.string.tuibutiaozheng);
+                    topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_top_img_placehoder));
+                    Glide.with(getContext()).load(R.drawable.jiaobutzf).diskCacheStrategy(DiskCacheStrategy.ALL).into(topIconImgView);
                 } else if (isUPorCancel(event.getAction())) {
+                    topIconImgView.setImageDrawable(null);
+                    Glide.with(getContext()).clear(topIconImgView);
                     setTopIconAndTitle(R.drawable.ic_jiaobu, R.string.tuibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
 //                    stopAnimation();
@@ -208,8 +242,11 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.tuibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 07 96 C2");
-                    setTopIconAndTitle(R.drawable.ic_jiaobu, R.string.tuibutiaozheng);
+                    topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.bg_top_img_placehoder));
+                    Glide.with(getContext()).load(R.drawable.jiaobutz).diskCacheStrategy(DiskCacheStrategy.ALL).into(topIconImgView);;
                 } else if (isUPorCancel(event.getAction())) {
+                    topIconImgView.setImageDrawable(null);
+                    Glide.with(getContext()).clear(topIconImgView);
                     setTopIconAndTitle(R.drawable.ic_jiaobu, R.string.tuibutiaozheng);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
                     //stopAnimation();
@@ -334,4 +371,5 @@ public class WeitiaoW1Fragment extends WeitiaoBaseFragment implements View.OnTou
         tiaozhengLayout.setVisibility(View.VISIBLE);
         xunhuanLayout.setVisibility(View.GONE);
     }
+
 }
