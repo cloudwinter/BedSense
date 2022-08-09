@@ -98,17 +98,20 @@
                     app:title="@string/beibutiaozheng"
                     android:layout_weight="1"/>
 
+
                 <com.fenmenbielei.bedsense.view.AnjianWeitiaoView
-                    android:id="@+id/view_zhengtishengjiang"
+                    android:id="@+id/view_tuibutiaozheng"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/weitiao_marin"
                     android:layout_marginRight="@dimen/weitiao_marin"
                     android:layout_marginTop="@dimen/weitiao_marin"
                     app:bgnormal="@drawable/bg_kuaijie_normal"
-                    app:icon="@drawable/ic_yijianfuyuan"
+                    app:icon="@drawable/ic_jiaobu"
                     app:title="@string/tuibutiaozheng"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    />
+
             </LinearLayout>
 
             <LinearLayout
@@ -120,14 +123,14 @@
 
 
                 <com.fenmenbielei.bedsense.view.AnjianWeitiaoView
-                    android:id="@+id/view_tuibutiaozheng"
+                    android:id="@+id/view_zhengtishengjiang"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/weitiao_marin"
                     android:layout_marginRight="@dimen/weitiao_marin"
                     app:bgnormal="@drawable/bg_kuaijie_normal"
-                    app:icon="@drawable/ic_jiaobu"
-                    app:title="@string/tuibutiaozheng"
+                    app:icon="@drawable/ic_yijianfuyuan"
+                    app:title="@string/zhengtishengjiang"
                     />
             </LinearLayout>
 

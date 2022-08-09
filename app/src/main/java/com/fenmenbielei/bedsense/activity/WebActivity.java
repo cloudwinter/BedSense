@@ -29,7 +29,7 @@ public class WebActivity extends BaseActivity implements TranslucentActionBar.Ac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web);
         ButterKnife.bind(this);
-        actionBar.setData(getString(R.string.ysi),R.mipmap.ic_default_return,null, 0, null, this);
+        actionBar.setData(getString(R.string.ysi), R.mipmap.ic_default_return, null, 0, null, this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             this.getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             actionBar.setStatusBarHeight(getStatusBarHeight());
@@ -45,6 +45,7 @@ public class WebActivity extends BaseActivity implements TranslucentActionBar.Ac
         webSettings.setJavaScriptEnabled(true);//支持js
         webSettings.setSupportZoom(true); // 可以缩放
         webSettings.setBuiltInZoomControls(true); // 显示放大缩小
+        webSettings.setDomStorageEnabled(true);//DOM Storage 重点是设置这个
 
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setLoadWithOverviewMode(true);
@@ -58,7 +59,18 @@ public class WebActivity extends BaseActivity implements TranslucentActionBar.Ac
         actionBar.setTitle(getString(R.string.ysi));
 //        String url = "file:///android_res/mipmap/img_ysxy.jpeg";
         webView.loadUrl("http://www.tri-mix.net/bedsense.html");
+        //该方法解决的问题是打开浏览器不调用系统浏览器，直接用webview打开
+
+        webView.setWebViewClient(new WebViewClient() {
+
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
     }
+
 
     @Override
     public void onLeftClick() {

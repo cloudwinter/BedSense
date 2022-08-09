@@ -233,7 +233,7 @@ public class HomeActivity extends BaseActivity implements View.OnClickListener, 
         } else if (blueName.contains("S3-4")) {
             fragments.add(new KuaijieK9Fragment());
             fragments.add(new WeitiaoW11Fragment());
-            title = "S3-4";
+            title = "Permobil Resten Hi-Low";
         } else if (blueName.contains("S4-2")) {
             fragments.add(new KuaijieK9Fragment());
             fragments.add(new WeitiaoW15Fragment());

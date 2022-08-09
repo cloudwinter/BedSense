@@ -304,14 +304,14 @@ public class KuaijieK10Fragment extends KuaijieBaseFragment implements View.OnTo
             case R.id.view_yijiangshengqi:
                 setTopIconAndTitle(R.drawable.xr_yijianshengqi_xiao, R.string.yijianshengqi);
                 if (MotionEvent.ACTION_DOWN == action) {
-                    sendBlueCmd("FF FF FF FF 05 00 00 00 0D 16 C5");
+                    sendBlueCmd("FF FF FF FF 05 00 00 00 06 57 02");
                 }
                 break;
 
             case R.id.view_yijiangjiangxia:
                 setTopIconAndTitle(R.drawable.xr_yijianjiangxia_xiao, R.string.yijianjiangxia);
                 if (MotionEvent.ACTION_DOWN == action) {
-                    sendBlueCmd("FF FF FF FF 05 00 00 00 0E 56 C4");
+                    sendBlueCmd("FF FF FF FF 05 00 00 00 07 96 C2\n");
                 }
                 break;
         }
