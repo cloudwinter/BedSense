@@ -3,6 +3,7 @@ package com.fenmenbielei.bedsense.fragment;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -133,26 +134,50 @@ public class KuaijieK9Fragment extends KuaijieBaseFragment implements View.OnTou
 
     @Override
     protected void handleReceiveData(String data) {
-        if (data.contains("FF FF FF FF 03 06 00 0A")) {
-            // 记忆1有记忆返回码
-            jiyi1View.setSelected(true);
+        if (isJIYIxunwenma2()) {
+            if (data.contains("FF FF FF FF 03 06 00 0A")) {
+                // 记忆1有记忆返回码
+                jiyi1View.setSelected(true);
+            }
+            if (data.contains("FF FF FF FF 03 06 00 0B")) {
+                // 记忆2有记忆返回码
+                jiyi2View.setSelected(true);
+            }
+            if (data.contains("FF FF FF FF 03 06 00 05")) {
+                // 看电视
+                kandianshiView.setSelected(true);
+            }
+            if (data.contains("FF FF FF FF 03 06 00 09")) {
+                // 零压力
+                lingyaliView.setSelected(true);
+            }
+            if (data.contains("FF FF FF FF 03 06 00 0F")) {
+                // 止鼾
+                zhihanView.setSelected(true);
+            }
+        } else {
+            if (data.contains("FF FF FF FF 03 12 00 AA")) {
+                // 记忆1有记忆返回码
+                jiyi1View.setSelected(true);
+            }
+            if (data.contains("FF FF FF FF 03 12 00 AB")) {
+                // 记忆2有记忆返回码
+                jiyi2View.setSelected(true);
+            }
+            if (data.contains("FF FF FF FF 03 12 00 A5")) {
+                // 看电视
+                kandianshiView.setSelected(true);
+            }
+            if (data.contains("FF FF FF FF 03 12 00 A9")) {
+                // 零压力
+                lingyaliView.setSelected(true);
+            }
+            if (data.contains("FF FF FF FF 03 12 00 AF")) {
+                // 止鼾
+                zhihanView.setSelected(true);
+            }
         }
-        if (data.contains("FF FF FF FF 03 06 00 0B")) {
-            // 记忆2有记忆返回码
-            jiyi2View.setSelected(true);
-        }
-        if (data.contains("FF FF FF FF 03 06 00 05")) {
-            // 看电视
-            kandianshiView.setSelected(true);
-        }
-        if (data.contains("FF FF FF FF 03 06 00 09")) {
-            // 零压力
-            lingyaliView.setSelected(true);
-        }
-        if (data.contains("FF FF FF FF 03 06 00 0F")) {
-            // 止鼾
-            zhihanView.setSelected(true);
-        }
+
 
 
         // 记忆1 按键回码
@@ -199,26 +224,57 @@ public class KuaijieK9Fragment extends KuaijieBaseFragment implements View.OnTou
     @Override
     void askStatus() {
         try {
-            // 记忆1
-            sendAskBlueCmd("FF FF FF FF 03 00 28 00 03 9F 09");
-            Thread.sleep(500L);
-            // 记忆2
-            sendAskBlueCmd("FF FF FF FF 03 00 30 00 03 1F 0E");
-            Thread.sleep(500L);
-            // 看电视
-            sendAskBlueCmd("FF FF FF FF 03 00 18 00 03 9F 06");
-            Thread.sleep(500L);
-            // 零压力
-            sendAskBlueCmd("FF FF FF FF 03 00 20 00 03 1E CB");
-            Thread.sleep(500L);
-            // 止鼾
-            sendAskBlueCmd("FF FF FF FF 03 00 38 00 03 9E CC");
+            if (isJIYIxunwenma2()) {
+                // 记忆1
+                sendAskBlueCmd("FF FF FF FF 03 00 28 00 03 9F 09");
+                Thread.sleep(500L);
+                // 记忆2
+                sendAskBlueCmd("FF FF FF FF 03 00 30 00 03 1F 0E");
+                Thread.sleep(500L);
+                // 看电视
+                sendAskBlueCmd("FF FF FF FF 03 00 18 00 03 9F 06");
+                Thread.sleep(500L);
+                // 零压力
+                sendAskBlueCmd("FF FF FF FF 03 00 20 00 03 1E CB");
+                Thread.sleep(500L);
+                // 止鼾
+                sendAskBlueCmd("FF FF FF FF 03 00 38 00 03 9E CC");
+            } else {
+                // 记忆1
+                sendAskBlueCmd("FF FF FF FF 03 00 28 00 09 1F 0E");
+                Thread.sleep(500L);
+                // 记忆2
+                sendAskBlueCmd("FF FF FF FF 03 00 31 00 09 CE C9");
+                Thread.sleep(500L);
+                // 看电视
+                sendAskBlueCmd("FF FF FF FF 03 00 16 00 09 7F C2");
+                Thread.sleep(500L);
+                // 零压力
+                sendAskBlueCmd("FF FF FF FF 03 00 1F 00 09 AE C0");
+                Thread.sleep(500L);
+                // 止鼾
+                sendAskBlueCmd("FF FF FF FF 03 00 3A 00 09 BF OB");
+            }
         } catch (Exception e) {
             LogUtils.e(TAG, "askStatus 异常" + e.getMessage());
             e.printStackTrace();
         }
     }
 
+    /**
+     * 是否是记忆询问码2
+     *
+     * @return
+     */
+    private boolean isJIYIxunwenma2() {
+        if (TextUtils.isEmpty(blueDeviceName)) {
+            return false;
+        }
+        if (blueDeviceName.contains("S3-4")) {
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
@@ -317,14 +373,14 @@ public class KuaijieK9Fragment extends KuaijieBaseFragment implements View.OnTou
             case R.id.view_yijiangshengqi:
                 setTopIconAndTitle(R.drawable.xr_yijianshengqi_xiao, R.string.yijianshengqi);
                 if (MotionEvent.ACTION_DOWN == action) {
-                    sendBlueCmd("FF FF FF FF 05 00 00 00 0D 16 C5");
+                    sendBlueCmd("FF FF FF FF 05 00 00 00 01 16 C0");
                 }
                 break;
 
             case R.id.view_yijiangjiangxia:
                 setTopIconAndTitle(R.drawable.xr_yijianjiangxia_xiao, R.string.yijianjiangxia);
                 if (MotionEvent.ACTION_DOWN == action) {
-                    sendBlueCmd("FF FF FF FF 05 00 00 00 0E 56 C4");
+                    sendBlueCmd("FF FF FF FF 05 00 00 00 02 56 C1\n");
                 }
                 break;
         }

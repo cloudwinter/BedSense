@@ -148,10 +148,6 @@ public class KuaijieK10Fragment extends KuaijieBaseFragment implements View.OnTo
             // 零压力
             lingyaliView.setSelected(true);
         }
-        if (data.contains("FF FF FF FF 03 06 00 0F")) {
-            // 止鼾
-            dingyaoView.setSelected(true);
-        }
 
 
         // 记忆1 按键回码
@@ -199,19 +195,16 @@ public class KuaijieK10Fragment extends KuaijieBaseFragment implements View.OnTo
     void askStatus() {
         try {
             // 记忆1
-            sendAskBlueCmd("FF FF FF FF 03 00 28 00 03 9F 09");
+            sendAskBlueCmd("FF FF FF FF 03 00 24 00 03 5F 0A");
             Thread.sleep(500L);
             // 记忆2
-            sendAskBlueCmd("FF FF FF FF 03 00 30 00 03 1F 0E");
+            sendAskBlueCmd("FF FF FF FF 03 00 2C 00 03 DE C8");
             Thread.sleep(500L);
             // 看电视
-            sendAskBlueCmd("FF FF FF FF 03 00 18 00 03 9F 06");
+            sendAskBlueCmd("FF FF FF FF 03 00 14 00 03 5F 05");
             Thread.sleep(500L);
             // 零压力
-            sendAskBlueCmd("FF FF FF FF 03 00 20 00 03 1E CB");
-            Thread.sleep(500L);
-            // 止鼾
-            sendAskBlueCmd("FF FF FF FF 03 00 38 00 03 9E CC");
+            sendAskBlueCmd("FF FF FF FF 03 00 1C 00 03 DE C7");
         } catch (Exception e) {
             LogUtils.e(TAG, "askStatus 异常" + e.getMessage());
             e.printStackTrace();
