@@ -247,7 +247,7 @@ public class KuaijieK9Fragment extends KuaijieBaseFragment implements View.OnTou
                 sendAskBlueCmd("FF FF FF FF 03 00 31 00 09 CE C9");
                 Thread.sleep(500L);
                 // 看电视
-                sendAskBlueCmd("FF FF FF FF 03 00 16 00 09 7F C2");
+                sendAskBlueCmd("FF FF FF FF 03 00 16 00 09 7E C2");
                 Thread.sleep(500L);
                 // 零压力
                 sendAskBlueCmd("FF FF FF FF 03 00 1F 00 09 AE C0");
@@ -418,6 +418,9 @@ public class KuaijieK9Fragment extends KuaijieBaseFragment implements View.OnTou
                 case LINGYALI_WHAT:
                     lingyaliLongClick();
                     break;
+                case ZHIHAN_WHAT:
+                    zhihanLongClick();
+                    break;
                 default:
                     break;
             }
@@ -441,6 +444,15 @@ public class KuaijieK9Fragment extends KuaijieBaseFragment implements View.OnTou
             sendBlueCmd("FF FF FF FF 05 00 00 5F 05 2E F3");
         } else {
             sendBlueCmd("FF FF FF FF 05 00 00 50 05 2B 03");
+        }
+    }
+
+    private void zhihanLongClick() {
+        if (zhihanView.isSelected()) {
+            // 有记忆
+            sendBlueCmd("FF FF FF FF 05 00 00 FF 0F D6 F4");
+        } else {
+            sendBlueCmd("FF FF FF FF 05 00 00 F0 0F D3 04");
         }
     }
 
