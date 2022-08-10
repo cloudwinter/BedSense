@@ -26,7 +26,7 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
@@ -34,8 +34,8 @@
 
             <com.dinuscxj.progressbar.CircleProgressBar
                 android:id="@+id/custom_progress4"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
                 android:layout_gravity="center"
                 app:draw_progress_text="false"
                 app:progress_background_color="@color/color_F9D577"

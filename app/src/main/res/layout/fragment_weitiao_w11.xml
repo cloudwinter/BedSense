@@ -26,7 +26,7 @@
         <FrameLayout
             android:id="@+id/layout_head"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginRight="15dp"
@@ -34,8 +34,8 @@
 
             <com.dinuscxj.progressbar.CircleProgressBar
                 android:id="@+id/custom_progress4"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
                 android:layout_gravity="center"
                 app:draw_progress_text="false"
                 app:progress_background_color="@color/color_F9D577"
@@ -47,8 +47,8 @@
                 app:style="solid_line" />
 
             <LinearLayout
-                android:layout_width="65dp"
-                android:layout_height="90dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:orientation="vertical">
@@ -57,13 +57,13 @@
                     android:id="@+id/img_anjian_top_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_beibu" />
+                    android:background="@drawable/beibutz"
+                    />
 
                 <TextView
                     android:id="@+id/text_anjian_top_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dp_10"
                     android:text="@string/beibutiaozheng"
                     android:textColor="@color/green"
                     android:textSize="15sp" />
