@@ -253,7 +253,7 @@ public class KuaijieK9Fragment extends KuaijieBaseFragment implements View.OnTou
                 sendAskBlueCmd("FF FF FF FF 03 00 1F 00 09 AE C0");
                 Thread.sleep(500L);
                 // 止鼾
-                sendAskBlueCmd("FF FF FF FF 03 00 3A 00 09 BF OB");
+                sendAskBlueCmd("FF FF FF FF 03 00 3A 00 09 BF 0B");
             }
         } catch (Exception e) {
             LogUtils.e(TAG, "askStatus 异常" + e.getMessage());

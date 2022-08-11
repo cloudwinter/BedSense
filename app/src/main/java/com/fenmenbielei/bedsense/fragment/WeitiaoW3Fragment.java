@@ -250,7 +250,7 @@ public class WeitiaoW3Fragment extends WeitiaoBaseFragment implements View.OnTou
      * @param titleResId
      */
     private void setTopIconAndTitle(int iconResId, int titleResId) {
-        topIconImgView.setBackground(ContextCompat.getDrawable(getContext(), iconResId));
+        topIconImgView.setImageDrawable(ContextCompat.getDrawable(getContext(), iconResId));
         topTitleTextView.setText(getString(titleResId));
     }
 

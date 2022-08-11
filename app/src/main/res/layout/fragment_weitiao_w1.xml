@@ -56,9 +56,10 @@
 
                 <ImageView
                     android:id="@+id/img_anjian_top_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/jiaobutz"
+                    android:layout_width="65dp"
+                    android:layout_height="65dp"
+                    android:src="@drawable/beibutz"
+                    android:scaleType="centerInside"
                     />
 
                 <TextView
