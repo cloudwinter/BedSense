@@ -153,11 +153,11 @@ public class WeitiaoW15Fragment extends WeitiaoBaseFragment implements View.OnTo
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.zhengtishengjiang);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 01 16 C0");
-                    setTopIconAndTitle(R.drawable.ic_yijianfuyuan, R.string.zhengtishengjiang);
+                    setTopIconAndTitle(R.drawable.tuiup, R.string.zhengtishengjiang);
                 } else if (isUPorCancel(event.getAction())) {
-                    setTopIconAndTitle(R.drawable.ic_yijianfuyuan, R.string.zhengtishengjiang);
+//                    stopAnimation();
+                    setTopIconAndTitle(R.drawable.tuiup, R.string.zhengtishengjiang);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-                    stopAnimation();
                 }
             }
 
@@ -166,11 +166,11 @@ public class WeitiaoW15Fragment extends WeitiaoBaseFragment implements View.OnTo
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.zhengtishengjiang);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 02 56 C1\n");
-                    setTopIconAndTitle(R.drawable.ic_yijianfuyuan, R.string.zhengtishengjiang);
+                    setTopIconAndTitle(R.drawable.tuiup, R.string.zhengtishengjiang);
                 } else if (isUPorCancel(event.getAction())) {
-                    setTopIconAndTitle(R.drawable.ic_yijianfuyuan, R.string.zhengtishengjiang);
+//                    stopAnimation();
+                    setTopIconAndTitle(R.drawable.tuiup, R.string.zhengtishengjiang);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-                    stopAnimation();
                 }
             }
         });

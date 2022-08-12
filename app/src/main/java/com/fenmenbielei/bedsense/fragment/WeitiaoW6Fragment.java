@@ -98,11 +98,11 @@ public class WeitiaoW6Fragment extends WeitiaoBaseFragment {
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.zhengtishengjiang);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 06 57 02");
-                    setTopIconAndTitle(R.drawable.ic_yijianfuyuan, R.string.zhengtishengjiang);
+                    setTopIconAndTitle(R.drawable.tuiup, R.string.zhengtishengjiang);
                 } else if (isUPorCancel(event.getAction())) {
-                    setTopIconAndTitle(R.drawable.ic_yijianfuyuan, R.string.zhengtishengjiang);
+//                    stopAnimation();
+                    setTopIconAndTitle(R.drawable.tuiup, R.string.zhengtishengjiang);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-                    stopAnimation();
                 }
             }
 
@@ -111,11 +111,11 @@ public class WeitiaoW6Fragment extends WeitiaoBaseFragment {
                 if (MotionEvent.ACTION_DOWN == event.getAction()) {
                     setTitle(R.string.zhengtishengjiang);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 07 96 C2");
-                    setTopIconAndTitle(R.drawable.ic_yijianfuyuan, R.string.zhengtishengjiang);
+                    setTopIconAndTitle(R.drawable.tuiup, R.string.zhengtishengjiang);
                 } else if (isUPorCancel(event.getAction())) {
-                    setTopIconAndTitle(R.drawable.ic_yijianfuyuan, R.string.zhengtishengjiang);
+                    //stopAnimation();
+                    setTopIconAndTitle(R.drawable.tuiup, R.string.zhengtishengjiang);
                     sendBlueCmd("FF FF FF FF 05 00 00 00 00 D7 00");
-                    stopAnimation();
                 }
             }
         });
