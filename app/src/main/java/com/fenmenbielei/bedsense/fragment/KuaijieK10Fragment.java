@@ -282,7 +282,7 @@ public class KuaijieK10Fragment extends KuaijieBaseFragment implements View.OnTo
                 }
                 break;
             case R.id.view_dingyao:
-                setTopIconAndTitle(R.drawable.xr_dingyao_xiao, R.string.dingyao);
+                setTopIconAndTitle(R.drawable.ic_yijianfuyuan, R.string.dingyao);
                 if (MotionEvent.ACTION_DOWN == action) {
                     sendBlueCmd("FF FF FF FF 05 00 00 00 2E 57 1C");
                 }
@@ -290,7 +290,7 @@ public class KuaijieK10Fragment extends KuaijieBaseFragment implements View.OnTo
             case R.id.view_fuyuan:
                 setTopIconAndTitle(R.drawable.ic_yijianfuyuan, R.string.fuyuan);
                 if (MotionEvent.ACTION_DOWN == action) {
-                    sendBlueCmd("FF FF FF FF 05 00 00 00 08 D6 C6");
+                    sendBlueCmd("FF FF FF FF 05 00 00 F1 0F D2 94");
                 }
                 break;
 
